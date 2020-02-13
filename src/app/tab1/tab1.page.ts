@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -7,6 +8,48 @@ import { Component } from '@angular/core';
 })
 export class Tab1Page {
 
-  constructor() {}
+  fases: Fases[] = [
+    {
+      numero: 1,
+      imagem: "assets/images/005-astronaut.png",
+      habilitado: true
+    },
+    {
+      numero: 2,
+      imagem: "assets/images/005-astronaut.png",
+      habilitado: false
+    },
+    {
+      numero: 3,
+      imagem: "assets/images/005-astronaut.png",
+      habilitado: false
+    },
+  ]
+
+  constructor(
+    private router: Router
+  ) {}
+
+  abrirDesafio(numero:number){
+
+    let data = {
+      id: numero,
+
+    }
+    let navigationExtras : NavigationExtras = {
+      state: {
+        data: data
+      }
+    };
+    //this.router.navigate(['/page-desafio'], navigationExtras);
+  }
 
 }
+
+
+interface Fases {
+  numero: number,
+  imagem: string,
+  habilitado: boolean
+}
+

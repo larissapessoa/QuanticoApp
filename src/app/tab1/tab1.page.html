@@ -1,13 +1,14 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Quantico
+      Universo de descobertas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-    <ion-card class="welcome-card">
+    
+    <!-- <ion-card class="welcome-card">
       <img src="/assets/logoQuantico.jpeg" alt="" />
       <ion-card-header>
         <ion-card-subtitle>Vamos começar</ion-card-subtitle>
@@ -16,6 +17,29 @@
       <ion-card-content>
         <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
       </ion-card-content>
-    </ion-card>
+    </ion-card> -->
+
+    <ion-grid>
+      <ion-row>
+        <ion-col *ngFor = "let fase of fases" >
+          <div>
+            <img class="img" [src]="fase.imagem">
+            <ion-fab>
+              <ion-fab-button (click)="abrirDesafio(fase.numero)" >
+                <span *ngIf="fase.habilitado" >
+                  {{fase.numero}}
+                </span>
+                <span *ngIf="!fase.habilitado">
+                  <ion-icon name="arrow-redo-circle-outline"></ion-icon> 
+                </span>
+              </ion-fab-button>
+            </ion-fab>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+   
    
 </ion-content>

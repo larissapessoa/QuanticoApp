@@ -1,4 +1,18 @@
-.welcome-card img {
+welcome-card img {
   max-height: 35vh;
   overflow: hidden;
+}
+
+
+.img{
+  max-width: 30px;
+}
+
+ion-fab-button{
+  --background: rgb(238, 161, 20);
+
+}
+
+.ion-color{
+  --background: black;
 }
