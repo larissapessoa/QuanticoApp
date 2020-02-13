@@ -41,7 +41,7 @@ export class Tab1Page {
         data: data
       }
     };
-    //this.router.navigate(['/page-desafio'], navigationExtras);
+    this.router.navigate(['/desafio-page'], navigationExtras);
   }
 
 }
