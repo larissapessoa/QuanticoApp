@@ -1,5 +1,7 @@
 {
   "name": "quantico-app",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

@@ -8,6 +8,7 @@ import { Router, NavigationExtras } from '@angular/router';
 })
 export class Tab1Page {
 
+
   fases: Fases[] = [
     {
       numero: 1,
