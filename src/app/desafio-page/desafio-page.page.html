@@ -10,4 +10,16 @@
     <!-- <ion-img [src]="assets/images/astrology.png"></ion-img> -->
     <ion-toggle [(ngModel)]="sausage" ></ion-toggle>
   </ion-item>
+
+  <div class="screen" *ngFor="let q of questions$ | async">
+
+    <div class="header">
+        <p class="steps">{{ totalQuestions }} / {{ q.id }}</p>
+    </div>
+
+    <div class="body">
+        <p class="question">{{ q.question }}</p>
+    </div>
+
+</div>
 </ion-content>
