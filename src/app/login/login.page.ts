@@ -1,10 +1,17 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Platform } from '@ionic/angular';
+
+import { LoadingController } from '@ionic/angular';
+import { NavController } from '@ionic/angular'; 
+  
+import {NavParams } from '@ionic/angular';
+
+import { User } from 'src/app/models/user'; 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -13,16 +20,21 @@ import { Platform } from '@ionic/angular';
 export class LoginPage {
 
   loading: any;
+  user = {} as User;
   constructor(
 
     private router: Router,
     private platform: Platform,
     private google:GooglePlus,
     public loadingController: LoadingController,
-    private fireAuth: AngularFireAuth
+    //private fireAuth: AngularFireAuth,
+    private afAuth: AngularFireAuth,
+    public navCtrl: NavController,
+   // public navParams: NavParams
 
   ) { }
 
+ 
   async ngOnInit() {
     this.loading = await this.loadingController.create({
       message: 'Connecting ...'
@@ -33,38 +45,24 @@ export class LoginPage {
     await loading.present();
   }
 
-  async login() {
-    let params;
-    if (this.platform.is('android')) {
-      params = {
-        'webClientId': '124018728460-sv8cqhnnmnf0jeqbnd0apqbnu6egkhug.apps.googleusercontent.com',
-        'offline': true
+  
+
+  async login(user: User) {
+    try {
+      const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
+      if (result) {
+        this.navCtrl.navigateRoot('LoginPage');
       }
+    } catch (e) {
+      console.error(e);
     }
-    else {
-      params = {}
-    }
-    this.google.login(params)
-      .then((response) => {
-        const { idToken, accessToken } = response
-        this.onLoginSuccess(idToken, accessToken);
-      }).catch((error) => {
-        console.log(error)
-        alert('error:' + JSON.stringify(error))
-      });
-  }
-  onLoginSuccess(accessToken, accessSecret) {
-    const credential = accessSecret ? firebase.auth.GoogleAuthProvider
-        .credential(accessToken, accessSecret) : firebase.auth.GoogleAuthProvider
-            .credential(accessToken);
-    this.fireAuth.auth.signInWithCredential(credential)
-      .then((response) => {
-        this.router.navigate(["/profile"]);
-        this.loading.dismiss();
-      })
-
   }
 
+  register() {
+    this.navCtrl.navigateBack('RegisterPage');
+  }  
+
+  
   onLoginError(err) {
     console.log(err);
   }

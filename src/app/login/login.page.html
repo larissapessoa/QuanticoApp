@@ -1,9 +1,66 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content class="swiper-no-swiping">
 
-<ion-content>
+  <div class="container top" [hidden]="keyboard.isVisible">
+    <!-- Imagem é declarada dentro da classe Thumbnail pois faz com que a imagem herde a posição da classe Pai. -->
+    <ion-thumbnail>
+      <img src="/QuanticoApp/src/assets/logoQuantico.jpeg">
+    </ion-thumbnail>
+    <!-- Cria-se um grupo de botões relacionados que navegam entre os slides de Login e Cadastro. -->
+    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login">
+      <ion-segment-button mode="ios" value="login">
+        <ion-label>Login</ion-label>
+      </ion-segment-button>
+      <ion-segment-button mode="ios" value="register">
+        <ion-label>Cadastro</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
 
+  <!-- O componente Slides é uma multi-seção de containers. Cada seção pode ser arrastada ou trocada via botões de segmento. -->
+  <ion-slides>
+
+    <!-- Container responsável pela seção de Login. -->
+    <ion-slide>
+      <div class="slide-inner ion-padding">
+        <span>Login</span>
+        <ion-item class="ion-margin-top" lines="none">
+          <!-- Recebe o input do tipo Email e contém placeholder. -->
+          <ion-input type="email" placeholder="E-mail"></ion-input>
+        </ion-item>
+        <ion-item class="ion-margin-top" lines="none">
+          <!-- Recebe o input do tipo Senha e contém placeholder -->
+          <ion-input type="password" placeholder="Senha"></ion-input>
+        </ion-item>
+        <!-- Botão tem um evento de Click chamando o método presente na login.page.ts-->
+        <ion-button class="ion-margin-top" (click)="entrar()" color="light" expand="block">
+          Entrar
+        </ion-button>
+      </div>
+    </ion-slide>
+
+    <!-- Container responsável pela seção de Cadastro. -->
+    <ion-slide>
+      <div class="slide-inner ion-padding">
+        <span>Cadastro</span>
+
+        <!-- Recebe o input do tipo Texto comum.-->
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-input type="text" placeholder="Nome"></ion-input>
+        </ion-item>
+        <!-- Recebe o input do tipo Email. -->
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-input type="email" placeholder="E-mail"></ion-input>
+        </ion-item>
+        <!-- Recebe o input do tipo Senha-->
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-input type="password" placeholder="Senha"></ion-input>
+        </ion-item>
+        <ion-button class="ion-margin-top" color="light" expand="block">
+          Cadastrar
+        </ion-button>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+  
 </ion-content>

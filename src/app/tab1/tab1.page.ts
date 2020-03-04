@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { ToastController, NavParams, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab1',
@@ -28,8 +30,22 @@ export class Tab1Page {
   ]
 
   constructor(
-    private router: Router
+    private router: Router,
+    private afAuth: AngularFireAuth,
+    private toast: ToastController,
+    public navCtrl: NavController,
+    //public navParams: NavParams
   ) {}
+
+  ionViewDidLoad() {
+    this.afAuth.authState.subscribe(data => {
+      if (data && data.email && data.uid) {
+        this.presentAlert();
+      } else {
+        this.presentAlert();
+      }
+    });
+  }
 
   abrirDesafio(numero:number){
 
@@ -45,6 +61,14 @@ export class Tab1Page {
     this.router.navigate(['/desafio-page'], navigationExtras);
   }
 
+  async presentAlert() {
+    const alert = await this.toast.create({
+    message: 'Low battery',
+    buttons: ['Dismiss']
+   });
+   await alert.present(); 
+}
+
 }
 
 
@@ -53,4 +77,5 @@ interface Fases {
   imagem: string,
   habilitado: boolean
 }
+
 

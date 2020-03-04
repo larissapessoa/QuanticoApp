@@ -1,0 +1,15 @@
+<ion-content padding>
+  <ion-list inset>
+    <ion-item>
+      <ion-label>Email</ion-label>
+      <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Password</ion-label>
+      <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div text-center>
+    <button ion-button (click)="register(user)">Register</button>
+  </div>
+</ion-content>
