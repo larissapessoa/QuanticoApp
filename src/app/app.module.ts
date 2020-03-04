@@ -16,6 +16,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FIREBASE_CONFIG } from 'src/app/firebase/firebase.component';
 import { LoginPage } from './login/login.page';
 import { ModelsDirective } from './models/models.directive';
+import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 
 
@@ -29,6 +30,7 @@ import { ModelsDirective } from './models/models.directive';
     SplashScreen,
     DocumentViewer,
     LogicProvider,
+    GooglePlus,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

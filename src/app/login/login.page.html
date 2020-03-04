@@ -1,9 +1,9 @@
 <ion-content class="swiper-no-swiping">
 
-  <div class="container top" [hidden]="keyboard.isVisible">
+  <div class="container top" >
     <!-- Imagem é declarada dentro da classe Thumbnail pois faz com que a imagem herde a posição da classe Pai. -->
     <ion-thumbnail>
-      <img src="/QuanticoApp/src/assets/logoQuantico.jpeg">
+      <img src="/assets/logoQuantico.jpeg">
     </ion-thumbnail>
     <!-- Cria-se um grupo de botões relacionados que navegam entre os slides de Login e Cadastro. -->
     <ion-segment (ionChange)="segmentChanged($event)" mode="ios" value="login">
@@ -32,7 +32,7 @@
           <ion-input type="password" placeholder="Senha"></ion-input>
         </ion-item>
         <!-- Botão tem um evento de Click chamando o método presente na login.page.ts-->
-        <ion-button class="ion-margin-top" (click)="entrar()" color="light" expand="block">
+        <ion-button class="ion-margin-top" (click)="login()" color="light" expand="block">
           Entrar
         </ion-button>
       </div>

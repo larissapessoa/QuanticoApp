@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { Platform } from '@ionic/angular';
+import { IonSlides } from '@ionic/angular';
+
 
 import { LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular'; 
@@ -21,6 +23,7 @@ export class LoginPage {
 
   loading: any;
   user = {} as User;
+  @ViewChild(IonSlides, {static:false} ) slides: IonSlides;
   constructor(
 
     private router: Router,
@@ -66,4 +69,14 @@ export class LoginPage {
   onLoginError(err) {
     console.log(err);
   }
+
+   //método que faz a troca dos slides referente ao login e ao cadastro.
+   segmentChanged(event: any) {
+    if (event.detail.value === 'login') {
+      this.slides.slidePrev();
+    } else {
+      this.slides.slideNext();
+    }
+  }
+
 }

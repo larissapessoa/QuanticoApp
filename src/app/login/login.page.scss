@@ -1,0 +1,56 @@
+//Classe que customiza o grupo de botões relacionados e a logo.
+.container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 45%;
+    margin: 0 auto;
+    z-index: 2;
+
+    &.top {
+        top: 5%;
+    }
+
+    &.bottom {
+        bottom: 30%;
+
+        span {
+            color: rgb(238, 161, 20);
+        }
+    }
+}
+
+// Classe referente ao componente Slides
+ion-slides {
+    height: 130%; 
+
+    // Atributo dos componentes dentro de cada seção ( um slide).
+    .slide-inner {
+        width: 75%;
+        color: #003bbb;
+        background-color: rgb(238, 161, 20);
+        border-color: #003bbb;
+        border-radius: 10px;
+
+        //Atributos dos componentes de input de cada seção.
+        ion-item {
+            --background: rgba(234, 243, 243, 0.932);
+            --border-radius: 10px;
+
+            ion-input {
+                --color: #003bbb;
+            }
+        }
+    }
+}
+
+//Seta o background da tela principal.
+ion-content{
+    --background: #fafaf8;
+}
+
+//Seta o tamanho de ocupação da logo.
+ion-thumbnail{
+    --size: 140px;
+}
+//url('src/assets/img/seagi_logo.png') no-repeat center center / cover! important;
