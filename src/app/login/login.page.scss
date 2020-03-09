@@ -1,0 +1,55 @@
+//Atributos dos componentes de input de cada seção.
+ion-item {
+     top: 0px;
+    --background: rgba(243, 135, 43, 0.38);
+    --border-radius: 30px;
+}
+
+a {
+    --background: rgba(243, 135, 43, 0.38);
+}
+ion-label {
+    --background: rgba(0, 0, 0);
+}
+
+.vertical-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    size: 20px;
+}
+
+//Classe que customiza o grupo de botões relacionados e a logo.
+.container {
+    position: relative;
+    left: 0;
+    right: 0;
+    width: 80%;
+    margin: 0 auto;
+    z-index: 2;
+
+    &.top {
+        top: 2%;
+    }
+    &.bottom {
+        bottom: 30%;
+        align-items: center;
+        justify-content: center;  
+            span {
+                --background: rgba(0, 0, 43);
+            }
+    }
+} 
+
+ion-button {
+    top: 50 px;
+    --background: rgba(243, 135, 43);
+}
