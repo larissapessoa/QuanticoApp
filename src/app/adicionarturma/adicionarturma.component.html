@@ -1,0 +1,42 @@
+
+<ion-content padding>
+  <div class="container top">
+    <form class="form" [formGroup]="validations_form" (ngSubmit)="cadastrarTurma(validations_form.value)">
+      <ion-item>
+        <ion-label position="floating">Nome da turma</ion-label>
+        <ion-input type="text" formControlName="nome_turma"></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.nome_turma">
+          <div class="error-message"
+            *ngIf="validations_form.get('nome_turma').hasError(validation.type) && (validations_form.get('nome_turma').dirty || validations_form.get('nome_turma').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item>
+        <ion-label position="floating">Sala</ion-label>
+        <ion-input type="number" formControlName="sala" class="form-controll"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating">Descrição da turma</ion-label>
+        <ion-input type="text" formControlName="descricao" class="form-controll" required></ion-input>
+      </ion-item>
+      <div class="validation-errors">
+        <ng-container *ngFor="let validation of validation_messages.descricao">
+          <div class="error-message"
+            *ngIf="validations_form.get('descricao').hasError(validation.type) && (validations_form.get('descricao').dirty || validations_form.get('descricao').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+
+
+      <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Adicionar</ion-button>
+      <label class="error-message">{{errorMessage}}</label>
+      <label class="success-message">{{successMessage}}</label>
+    </form>
+  </div>
+</ion-content>

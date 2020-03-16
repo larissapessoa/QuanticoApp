@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar text-center>
+    <ion-title>Minhas Turmas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list *ngFor = "let turma of turmas">
+    <ion-card>
+      <ion-card-header>
+        <img class="icon" class="img" [src]="urlImg"/>
+        <ion-card-subtitle>Sala: {{turma.Sala}}</ion-card-subtitle>
+        <ion-card-title>{{turma.Nome}}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+       {{turma.Descricao}}
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color='warning'>
+      <ion-icon (click)="adicionarTurma()" name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

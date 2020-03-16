@@ -1,0 +1,43 @@
+welcome-card img {
+  max-height: 35vh;
+  overflow: hidden;
+}
+
+ion-row {
+  top: 0%;
+  position: absolute;
+  height: 80%;
+  width: 100%;
+  left: 1%;
+  right: 77.42%;
+  bottom: 88.6%;
+}
+
+.img{
+  max-width: 30px;
+ 
+  
+}
+
+ion-fab-button{
+  --background: rgba(243, 135, 43, 0.81);
+
+}
+
+.ion-color{
+  --background: black;
+}
+
+
+.label{
+  font-size: larger;
+}
+
+// .pos{
+//   top: 50px;
+//   position: absolute;
+//   margin-inline-start: auto;
+//   margin-left: 4.71%;
+//   margin-right: 77.42%;
+//   bottom: 88.6%;
+// }

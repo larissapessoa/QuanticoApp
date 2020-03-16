@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "question": " Quais os nomes de grande físicos citados no poema?",
+        "options": [
+            {
+                "letra": "a",
+                "option": "James Maxwell, Tales de Mileto, Galileu Galilei"
+            },
+            {
+                "letra": "b",
+                "option": "Caio Castro, Leonardo DiCaprio, Henry Cavill"
+            },
+            {
+                "letra": "c",
+                "option": "Zico, Pelé, Maradona"
+            },
+            {
+                "letra": "d",
+                "option": "Neymar, Gabigol, Harry Potter"
+            }
+        ],
+        "resposta": "a",
+        "imagem": "../assets/images/008-astronaut.png"
+    }
+]

@@ -1,0 +1,47 @@
+ion-card-header{
+    --background: rgb(238, 161, 20);
+    --color: #ffffff;
+
+}
+
+ion-fab{
+    --size: 5px;
+}
+
+.animate-me {
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    background: rgb(238, 161, 20);
+}
+
+.question {
+    --color: #ffffff;
+
+}
+
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    display: contents;
+    max-width: 50px;
+}
+
+.option{
+    --background: #ffffff;
+}
+
+ion-tabs {
+    display: contents;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 70px;;
+}
+
+.img{
+    max-width: 50px;
+}
