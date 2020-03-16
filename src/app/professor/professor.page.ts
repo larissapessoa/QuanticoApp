@@ -56,14 +56,6 @@ export class ProfessorPage implements OnInit {
   }
 
   listarTurmas() {
-    /* this.firestore.getProfessor().subscribe(snapshot => {
-      snapshot.forEach(doc => {
-        if (doc.data().email == this.email) {
-          this.turmas = this.firestore.getTurmas(doc.id); 
-          console.log("turmas", this.turmas);
-        }
-      });
-    }); */
 
     this.firestore.getProfessor().subscribe(snapshot => {
       snapshot.forEach(doc => {
