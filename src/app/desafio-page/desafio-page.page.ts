@@ -6,6 +6,7 @@ import { IonSlides } from '@ionic/angular';
 import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
 
+https://github.com/larissapessoa/QuanticoApp.git
 
 @Component({
   selector: 'app-desafio-page',
