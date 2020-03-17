@@ -26,6 +26,10 @@ const routes: Routes = [
   {
     path: 'adicionarturma',
     loadChildren: () => import('./adicionarturma/adicionarturma.component')
+  },
+  {
+    path: 'turma-page',
+    loadChildren: () => import('./turma-page/turma-page.module').then( m => m.TurmaPagePageModule)
   }
 
 ];

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AdicionarturmaComponent } from '../adicionarturma/adicionarturma.component';
-import { ModalController } from '@ionic/angular';
+import { ModalController, NavController } from '@ionic/angular';
 import { FirestoreService } from '../services/firestore.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-professor',
@@ -21,6 +21,8 @@ export class ProfessorPage implements OnInit {
     private firestore: FirestoreService,
     private route: ActivatedRoute,
     public router: Router,
+    private navCtrl: NavController,
+
   ) { }
 
   ngOnInit() {
@@ -79,6 +81,21 @@ export class ProfessorPage implements OnInit {
     });
   }
 
+  verTurma(turma, sala, descricao){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        data: {
+          email: this.email,
+          nome_turma: turma,
+          sala: sala,
+          descricao: descricao
+        } 
+      }
+    };
+
+
+    this.navCtrl.navigateForward('/turma-page', navigationExtras);
+  }
 
 
 }

@@ -7,7 +7,7 @@
 <ion-content>
 
   <ion-list *ngFor = "let turma of turmas">
-    <ion-card>
+    <ion-card (click)="verTurma(turma.Nome, turma.Sala, turma.Descricao)">
       <ion-card-header>
         <img class="icon" class="img" [src]="urlImg"/>
         <ion-card-subtitle>Sala: {{turma.Sala}}</ion-card-subtitle>
