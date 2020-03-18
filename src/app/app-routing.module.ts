@@ -30,6 +30,10 @@ const routes: Routes = [
   {
     path: 'turma-page',
     loadChildren: () => import('./turma-page/turma-page.module').then( m => m.TurmaPagePageModule)
+  },
+  {
+    path: 'level1',
+    loadChildren: () => import('./level1/level1.module').then( m => m.Level1PageModule)
   }
 
 ];

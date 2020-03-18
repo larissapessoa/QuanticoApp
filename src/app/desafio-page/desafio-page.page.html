@@ -75,9 +75,13 @@
 
     <ion-slide *ngIf="respondeuErrado">
       <ion-card>
-        <ion-card-header>
-          Segundo desafio
+        <ion-card-header>      
+          <div class="ion-padding">
+            <p>Encontre os pares de figuras</p>
+          </div>         
+          <ion-button class="botao" color="light" expand="block" routerLink="/level1" routerDirection="forward">Jogo da Memoria</ion-button>
         </ion-card-header>
+       
       </ion-card>
     </ion-slide>
 
