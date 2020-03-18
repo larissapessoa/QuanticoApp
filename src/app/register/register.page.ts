@@ -68,7 +68,18 @@ export class RegisterPage implements OnInit {
         this.errorMessage = err.message;
         this.successMessage = "";
       });
-    this.firestore.criar(value.usuario, value);
+      if(value.usuario == 'Estudantes'){
+        let putData = {
+          email: value.email,
+          senha: value.password,
+          usuario: value.usuario,
+          pontos: 0
+        }
+        this.firestore.criar(value.usuario, putData);
+      }else{
+        this.firestore.criar(value.usuario, value);
+      }
+      
   }
 
   goLoginPage() {

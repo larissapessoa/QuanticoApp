@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ServicostorageService } from '../services/servicostorage.service';
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit {
   fases: Fases[] = [
     {
       numero: 1,
@@ -66,10 +67,26 @@ export class Tab1Page {
 
   ]
 
+  emailEstudante: any;
+  idEstudante: any;
+
+
   constructor(
     private router: Router,
-    private consultaFase: ServicostorageService
+    private consultaFase: ServicostorageService,
+    private route: ActivatedRoute,
+    private firestore: FirestoreService,
+
   ) { }
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(() => {
+      if (this.router.getCurrentNavigation().extras.state) {
+        this.emailEstudante = this.router.getCurrentNavigation().extras.state.data;
+        console.log("id tabs", this.emailEstudante);
+      }
+    });
+  }
 
   ionViewWillEnter() {
     this.verificarDisponivel();
@@ -86,17 +103,23 @@ export class Tab1Page {
     });
   }
   abrirDesafio(numero: number) {
-
-    let data = {
-      id: numero,
-
-    }
-    let navigationExtras: NavigationExtras = {
-      state: {
-        data: data
-      }
-    };
-    this.router.navigate(['/desafio-page'], navigationExtras);
+    this.firestore.getEstudantes().subscribe(snapshot => {
+      snapshot.forEach(doc => {
+        if (doc.data().email == this.emailEstudante) {
+          console.log("doc id", doc.id);
+          this.idEstudante = doc.id;
+        }
+      });
+      let navigationExtras: NavigationExtras = {
+        state: {
+          data: {
+            id: numero,
+            idEstudante: this.idEstudante
+          }
+        }
+      };
+      this.router.navigate(['/desafio-page'], navigationExtras);
+    });
   }
 
 }

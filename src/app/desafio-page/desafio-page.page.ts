@@ -5,8 +5,7 @@ import { LogicProvider } from './services/logic.service';
 import { IonSlides } from '@ionic/angular';
 import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
-
-https://github.com/larissapessoa/QuanticoApp.git
+import { FirestoreService } from '../services/firestore.service';
 
 @Component({
   selector: 'app-desafio-page',
@@ -19,6 +18,8 @@ export class DesafioPagePage implements OnInit {
   options$: Observable<Options[]>;
   resposta: any;
   respondeu: boolean;
+  respondeuErrado: boolean;
+  respondeuCerto : boolean;
   totalQuestions: number;
   titulo: string;
   ulrImgContinuar: any;
@@ -27,6 +28,9 @@ export class DesafioPagePage implements OnInit {
   urlTxt: string;
   urlDesafio: string;
   urlVideo: string;
+  pontos: number;
+  messagemResposta: any;
+  idEstudante: any;
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
@@ -34,7 +38,9 @@ export class DesafioPagePage implements OnInit {
     private route: ActivatedRoute,
     public router: Router,
     public _logic: LogicProvider,
-    private storageFase: ServicostorageService
+    private storageFase: ServicostorageService,
+    private firestore: FirestoreService,
+
 
   ) { }
 
@@ -42,19 +48,21 @@ export class DesafioPagePage implements OnInit {
     this.ulrImgContinuar = "assets/images/005-astronaut.png";
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {
-        this.txtLiterario = this.router.getCurrentNavigation().extras.state.data;
+        this.txtLiterario = this.router.getCurrentNavigation().extras.state.data.id;
+        this.idEstudante = this.router.getCurrentNavigation().extras.state.data.idEstudante;
       }
-      console.log("txt", this.txtLiterario.id)
+      console.log("idEstudante", this.idEstudante);
+      console.log("id txt", this.txtLiterario);
 
     });
-    this.urlTxt = 'assets/textos/texto' + this.txtLiterario.id + '.json';
+    this.urlTxt = 'assets/textos/texto' + this.txtLiterario + '.json';
     this.questions$ = this._logic.getData(this.urlTxt);
     this.questions$.subscribe((res) => {
       this.totalQuestions = res.length
     })
     console.log("txy", this.questions$);
 
-    this.tituloTxtLiterario(this.txtLiterario.id);
+    this.tituloTxtLiterario(this.txtLiterario);
     this.urlDesafio = 'assets/desafios/1.json';
     this.desafio$ = this._logic.getDesafio(this.urlDesafio);
     //this.resposta = this.desafio$[0].resposta;
@@ -62,7 +70,7 @@ export class DesafioPagePage implements OnInit {
       this.resposta = desafio[0].resposta;
     })
 
-    this.urlVideo = 'assets/video/' + this.txtLiterario.id + '.mp4';
+    this.urlVideo = 'assets/video/' + this.txtLiterario + '.mp4';
 
    /*   //this.changeBackground = true;
     var urlTxt = 'assets/textos/' + this.txtLiterario.id +'.pdf';
@@ -82,17 +90,18 @@ export class DesafioPagePage implements OnInit {
     })
   } */
 
-  callAnime() {
+  callAnime(resposta) {
     anime({
       targets: '.animate-me',
-      translateX: [
+      /* translateX: [
         { value: 100, duration: 1200 },
         { value: 0, duration: 800 }
-      ],
+      ], */
       rotate: '1turn',
       backgroundColor: '#ff00ff',
-      duration: 2000
+      duration: 3000
     });
+    this.respostaCerta(resposta);
   }
 
   tituloTxtLiterario(id) {
@@ -131,13 +140,18 @@ export class DesafioPagePage implements OnInit {
 
   respostaCerta(resposta) {
     if (resposta == this.resposta) {
+      this.pontos = 100;
       console.log("Resposta Certa");
       this.respondeu = true;
+      this.respondeuCerto = true;
+      this.messagemResposta =  "Resposta correta! Você fez " + this.pontos + " aprendiz!";
+      console.log(this.idEstudante);
+      this.firestore.atualizarPontos("Estudantes", this.idEstudante, this.pontos);
       this.storageFase.getFases().then(data => {
         var AnyData = <[Fases]>data;
         //se a resposta for certa e minha fase atual -->
-        if (AnyData[this.txtLiterario.id - 1].habilitado && !AnyData[this.txtLiterario.id].habilitado) {
-          AnyData[this.txtLiterario.id].habilitado = true;
+        if (AnyData[this.txtLiterario - 1].habilitado && !AnyData[this.txtLiterario].habilitado) {
+          AnyData[this.txtLiterario].habilitado = true;
           this.storageFase.setFases(AnyData).then(data2 => {
             console.log("Proxima Fase Liberada");
           })
@@ -146,10 +160,10 @@ export class DesafioPagePage implements OnInit {
     }
     else {
       this.respondeu = true;
-      console.log("Tente novamente");
+      this.respondeuErrado = true;
+      this.messagemResposta =  "Resposta errada! Por favor, tente novamente!";
     }
   }
-
 
   next() {
     return this.slides.slideNext();

@@ -26,8 +26,6 @@ export class AdicionarturmaComponent implements OnInit {
     ]
   };
 
-
-
   constructor(
     private navCtrl: NavController,
     private authService: AuthenticationService,
@@ -56,12 +54,44 @@ export class AdicionarturmaComponent implements OnInit {
 
   }
 
+  async verificarCodigoTurma() {
+    var codigo = this.generatePassword(6);
+    var data_array = [];
+    await this.firestore.getCodigosTurmas().then(data => {
+      data_array = data;
+    });
+    if (data_array.indexOf(codigo) == -1) {
+      return codigo;
+    } else {
+      this.verificarCodigoTurma();
+    }
+  }
+
+
+  generatePassword(len) {
+    var pwd = [],
+      cc = String.fromCharCode,
+      R = Math.random,
+      rnd, i;
+    pwd.push(cc(48 + (0 | R() * 10))); // push a number
+    pwd.push(cc(65 + (0 | R() * 26))); // push an upper case letter
+    for (i = 2; i < len; i++) {
+      rnd = 0 | R() * 62; // generate upper OR lower OR number
+      pwd.push(cc(48 + rnd + (rnd > 9 ? 7 : 0) + (rnd > 35 ? 6 : 0)));
+    }
+    // shuffle letters in password
+    return pwd.sort(function () { return R() - .5; }).join('');
+  }
+
   cadastrarTurma(value) {
-    console.log("email professor", this.emailProfessor);
+    var prop;
+    this.verificarCodigoTurma().then(codigo => {
+      prop = { "nome_turma": value.nome_turma, "sala": value.sala, "descricao": value.descricao, "codigo": codigo };
+    });
     this.firestore.getProfessor().subscribe(snapshot => {
       snapshot.forEach(doc => {
         if (doc.data().email == this.emailProfessor) {
-          this.firestore.criarTurma(doc.id, value)
+          this.firestore.criarTurma(doc.id, prop)
             .then(res => {
               console.log(res);
               this.errorMessage = "";
@@ -77,7 +107,6 @@ export class AdicionarturmaComponent implements OnInit {
       });
     })
     this.closeModal();
-
   }
 
   goPage() {

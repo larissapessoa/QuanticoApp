@@ -36,7 +36,6 @@
     </ion-slide>
 
     <ion-slide>
-
       <ion-card>
         <div class="screen" *ngFor="let desafio of desafio$ | async">
           <ion-card-header>
@@ -44,31 +43,25 @@
             <ion-card-subtitle class="question">{{desafio.question}}</ion-card-subtitle>
           </ion-card-header>
           <ion-item *ngFor="let opts of desafio.options" class="option">
-            <ion-card-content (click)="respostaCerta(opts.letra)" (click)="callAnime()">
+            <ion-card-content (click)="callAnime(opts.letra)">
               <span> {{opts.letra}} .</span>
               {{opts.option}}
             </ion-card-content>
           </ion-item>
           <ion-item *ngIf="respondeu" (click)='next()'>
             <div class="animate-me" #box>
-            
               <img width="200" height="200" class="center" alt="" [src]="ulrImgContinuar"/>
-    
              </div>
              <label>
-               Resposta certa!!!
+              {{messagemResposta}}
              </label>
           </ion-item>
-
         </div>
-  
       </ion-card>
-
-       
     </ion-slide>
 
 
-    <ion-slide *ngIf="respondeu">
+    <ion-slide *ngIf="respondeuCerto">
 
       <ion-card>
         <ion-card-header>
@@ -79,7 +72,13 @@
             </video>
       </ion-card>
     </ion-slide>
-    <ion-slide>
+
+    <ion-slide *ngIf="respondeuErrado">
+      <ion-card>
+        <ion-card-header>
+          Segundo desafio
+        </ion-card-header>
+      </ion-card>
     </ion-slide>
 
   </ion-slides>

@@ -56,6 +56,7 @@ export class LoginPage implements OnInit {
 
   loginUser(value) {
     var professor = false;
+    var terminou = false;
     let navigationExtras: NavigationExtras = {
       state: {
         data: ""
@@ -63,17 +64,20 @@ export class LoginPage implements OnInit {
     };
     this.authService.presentLoading("Que comece a aventura...")
     this.authService.loginUser(value)
-      .then(res => {
-        this.firestore.getProfessor().subscribe(snapshot => {
-          snapshot.forEach(doc => {
-            if (doc.data().email == value.email) {
-              professor = true;
-              navigationExtras.state.data = doc.data().email;
-            }
-          });
-          if (!professor) this.navCtrl.navigateForward('/tabs');
-          else this.navCtrl.navigateForward('/professor', navigationExtras);
+    .then(res => {
+      this.firestore.getProfessor().subscribe(async snapshot => {
+        snapshot.forEach(doc => {
+          if (doc.data().email == value.email) {
+            professor = true;
+            navigationExtras.state.data = doc.data().email;
+          }
         });
+        if (!professor){
+          navigationExtras.state.data = value.email;
+          this.navCtrl.navigateForward('/tabs', navigationExtras);
+        }
+        else this.navCtrl.navigateForward('/professor', navigationExtras);
+      });
       }, err => {
         this.authService.presentToast("Algo deu errado :(");
         this.errorMessage = "Não foi encontrado usuário com essas credenciais. Por favor, tente novamente!";
