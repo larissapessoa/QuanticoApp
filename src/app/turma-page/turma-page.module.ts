@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { TurmaPagePageRoutingModule } from './turma-page-routing.module';
 
 import { TurmaPagePage } from './turma-page.page';
+import { AdiconarTemasComponent } from '../adiconar-temas/adiconar-temas.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { TurmaPagePage } from './turma-page.page';
     IonicModule,
     TurmaPagePageRoutingModule
   ],
-  declarations: [TurmaPagePage]
+  declarations: [TurmaPagePage, AdiconarTemasComponent],
+  entryComponents: [AdiconarTemasComponent]
 })
 export class TurmaPagePageModule {}

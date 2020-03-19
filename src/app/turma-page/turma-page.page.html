@@ -1,9 +1,38 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>turma-page</ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content>
+
+<ion-content color="warning">
+  <ion-card>
+    <img class="icon" src="urlImg"/>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <ion-card-subtitle>Sala: {{infoTurma.salaTurma}}</ion-card-subtitle>
+        <ion-card-title>{{infoTurma.nomeTurma}}</ion-card-title>
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      Olá, {{infoTurma.emailProfessor}}! Aqui é seu ambiente de criação, construa jornadas desafiantes para seus aprendizes!
+    </ion-card-content>
+  </ion-card>
+
+  <div>
+   <!--  <img src="urlImg" class="img">
+    <div class="label">Criar um tema!</div>
+    <ion-fab>
+      <ion-fab-button>
+        <ion-icon (click)="adicionarTemas()" name="add"></ion-icon>
+      </ion-fab-button>  
+    </ion-fab> -->
+
+    <ion-fab-list side="top">
+      <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+      <ion-label>lavel 1</ion-label>
+    </ion-fab-list>
+  </div>
+
+
+  
+    
 
 </ion-content>

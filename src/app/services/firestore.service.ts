@@ -1,4 +1,5 @@
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import * as firebase from 'firebase';
 
 export class FirestoreService {
 
@@ -35,7 +36,7 @@ export class FirestoreService {
 
   atualizarPontos(colecao, doc, pontos) {
     return this.db.collection(colecao).doc(doc).update({
-      "pontos": pontos
+      "pontos": firebase.firestore.FieldValue.increment(pontos)
     })
   }
 
