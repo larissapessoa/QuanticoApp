@@ -6,6 +6,7 @@ import { IonSlides } from '@ionic/angular';
 import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
 import { FirestoreService } from '../services/firestore.service';
+import { triggerAsyncId } from 'async_hooks';
 
 @Component({
   selector: 'app-desafio-page',
@@ -31,6 +32,8 @@ export class DesafioPagePage implements OnInit {
   pontos: number;
   messagemResposta: any;
   idEstudante: any;
+  respostaTexto: string;
+  respondeuErrado2: boolean;
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
@@ -165,6 +168,25 @@ export class DesafioPagePage implements OnInit {
     }
   }
 
+  compararResposta(){
+    var str2 = "Nos mostra o conhecimento";
+    var n = this.respostaTexto.localeCompare(str2);
+    if (n == 0){
+      console.log("Resposta Certa!");
+      this.respondeuCerto = true;
+      this.pontos = 50;
+      this.messagemResposta =  "Resposta correta! Você fez " + this.pontos + " aprendiz!";
+    
+    }
+    else{
+      console.log("Tente novamente!");
+      this.messagemResposta =  "Resposta errada! Por favor, tente novamente!";
+      this.respondeuErrado2 = true;
+    }
+    console.log("string2",str2);
+    console.log("n", n);
+    this.respondeu = true;
+  }
   next() {
     return this.slides.slideNext();
   }

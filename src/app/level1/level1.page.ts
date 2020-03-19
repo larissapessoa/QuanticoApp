@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicostorageService } from '../services/servicostorage.service';
+import {DesafioPagePage} from 'src/app/desafio-page/desafio-page.page';
 
 @Component({
   selector: 'app-level1',
