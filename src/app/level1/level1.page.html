@@ -75,6 +75,14 @@
     <ion-icon name="repeat"></ion-icon>
     &nbsp; &nbsp; Tente novamente
   </ion-button>
+  <ion-item *ngIf="respondeu" (click)='next()'>
+    <div class="animate-me" #box>
+      <img width="200" height="200" class="center" alt="" [src]="ulrImgContinuar"/>
+     </div>
+     <label>
+      {{messagemResposta}}
+     </label>
+  </ion-item>     
     </div>
 
     <!-- show win screen-->
@@ -88,6 +96,14 @@
       <ion-icon name="repeat"></ion-icon>
       &nbsp; &nbsp; Jogar Novamente
     </ion-button>
+    <ion-item *ngIf="respondeu" (click)='next()'>
+      <div class="animate-me" #box>
+        <img width="200" height="200" class="center" alt="" [src]="ulrImgContinuar"/>
+       </div>
+       <label>
+        {{messagemResposta}}
+       </label>
+    </ion-item>     
       </div>
 
     </div>
