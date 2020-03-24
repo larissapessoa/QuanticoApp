@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "question": "Vetor é um tipo de grandeza que possui além do sentido e direção, um valor numérico. Como este valor é chamado?",
+        "options": [
+            {
+                "letra": "a",
+                "option": "Vetorização"
+            },
+            {
+                "letra": "b",
+                "option": "Módulo"
+            },
+            {
+                "letra": "c",
+                "option": "Delta"
+            },
+            {
+                "letra": "d",
+                "option": "Força"
+            }
+        ],
+        "resposta": "b",
+        "imagem": "../assets/images/014-astronaut.png"
+    }
+]

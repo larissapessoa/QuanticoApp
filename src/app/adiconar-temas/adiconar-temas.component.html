@@ -1,9 +1,102 @@
-
 <ion-content padding>
-  <div class="container top">
-      <ion-item>
-        <ion-label position="floating">Tema</ion-label>
-        <ion-input type="text" ></ion-input>
-      </ion-item> 
-  </div>
+  <ion-slides>
+
+    <ion-slide>
+      <div class="container top">
+        <p>
+          Qual será o tema deste desafio?
+        </p>
+        <img [src]="urlImgTema" />
+        <form [formGroup]="tema" (ngSubmit)="submit()">
+          <ion-item>
+            <ion-label position="floating">Digite aqui o Tema...</ion-label>
+            <ion-input formControlName="temaTitulo" type="text"></ion-input>
+          </ion-item>
+          <ion-fab vertical="bottom" horizontal="end" slot="stacked">
+            <ion-fab-button color="warning" position="stacked" [disabled]="!tema.valid" (click)="next()">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="container top">
+
+        <p>
+          Adicione aqui um texto literário relacionado ao tema que deseja compartilhar. Este texto, irá guiar o seu
+          aprendiz por essa aventura!
+        </p>
+        <img class="img" [src]="urlImgTexto" />
+        <form [formGroup]="texto" (ngSubmit)="submit()">
+          <ion-item>
+            <ion-textarea formControlName="textoLiterario" rows="10" cols="20">
+            </ion-textarea>
+          </ion-item>
+          <ion-fab vertical="bottom" horizontal="end" slot="stacked">
+            <ion-fab-button color="warning" position="stacked" [disabled]="!texto.valid" (click)="next()">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-slide>
+   
+
+
+    <ion-slide>
+      <div class="container top">
+
+        <p>
+          Desafie os seus aprendizes. Faça uma pergunta e adicione até 4 opções de respostas!
+        </p>
+        <img class="img" [src]="urlImgTexto" />
+        <form [formGroup]="desafio" (ngSubmit)="submit()">
+          <ion-item>
+            <ion-label position="floating">Digite aqui sua pergunta</ion-label>
+            <ion-input formControlName="pergunta"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Primeira opção</ion-label>
+            <ion-input formControlName="opcao1" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Segunda opção</ion-label>
+            <ion-input formControlName="opcao2" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Terceira opção</ion-label>
+            <ion-input formControlName="opcao3" type="text"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Quarta opção</ion-label>
+            <ion-input formControlName="opcao4" type="text"></ion-input>
+          </ion-item>
+          <ion-fab vertical="bottom" horizontal="end" slot="stacked">
+            <ion-fab-button color="warning" position="stacked" [disabled]="!desafio.valid" (click)="next()">
+              <ion-icon name="arrow-forward"></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        </form>
+      </div>
+    </ion-slide>
+
+    <ion-slide>
+      <div class="container top">
+        <p>
+         Recompense os seus aprendizes. Coloque aqui a url de um vídeo musical para auxiliar na absorção do conteúdo!
+        </p>
+        <img class="img" [src]="urlImgTexto" />
+        <form [formGroup]="video" (ngSubmit)="submit()">
+          <ion-item>
+            <ion-input placeholder="Ex: https://www.youtube.com/video-exemplo" formControlName="urlVideo">
+            </ion-input>
+          </ion-item>
+        </form>  
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+
 </ion-content>

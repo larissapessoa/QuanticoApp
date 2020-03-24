@@ -6,7 +6,8 @@ import { IonSlides } from '@ionic/angular';
 import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
 import { FirestoreService } from '../services/firestore.service';
-import { triggerAsyncId } from 'async_hooks';
+import { AstMemoryEfficientTransformer } from '@angular/compiler';
+//import { triggerAsyncId } from 'async_hooks';
 
 @Component({
   selector: 'app-desafio-page',
@@ -20,7 +21,7 @@ export class DesafioPagePage implements OnInit {
   resposta: any;
   respondeu: boolean;
   respondeuErrado: boolean;
-  respondeuCerto : boolean;
+  respondeuCerto: boolean;
   totalQuestions: number;
   titulo: string;
   ulrImgContinuar: any;
@@ -34,6 +35,9 @@ export class DesafioPagePage implements OnInit {
   idEstudante: any;
   respostaTexto: string;
   respondeuErrado2: boolean;
+  cont_resp: number;
+  acertou: boolean;
+  respondeuSegunda: any;
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
@@ -48,6 +52,8 @@ export class DesafioPagePage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.cont_resp = 0;
+    this.acertou = false;
     this.ulrImgContinuar = "assets/images/005-astronaut.png";
     this.route.queryParams.subscribe(() => {
       if (this.router.getCurrentNavigation().extras.state) {
@@ -66,7 +72,7 @@ export class DesafioPagePage implements OnInit {
     console.log("txy", this.questions$);
 
     this.tituloTxtLiterario(this.txtLiterario);
-    this.urlDesafio = 'assets/desafios/1.json';
+    this.urlDesafio = 'assets/desafios/' + this.txtLiterario + '.json';
     this.desafio$ = this._logic.getDesafio(this.urlDesafio);
     //this.resposta = this.desafio$[0].resposta;
     this.desafio$.forEach(desafio => {
@@ -142,51 +148,57 @@ export class DesafioPagePage implements OnInit {
   }
 
   respostaCerta(resposta) {
-    if (resposta == this.resposta) {
-      this.pontos = 100;
-      console.log("Resposta Certa");
-      this.respondeu = true;
-      this.respondeuCerto = true;
-      this.messagemResposta =  "Resposta correta! Você fez " + this.pontos + " aprendiz!";
-      console.log(this.idEstudante);
-      this.firestore.atualizarPontos("Estudantes", this.idEstudante, this.pontos);
-      this.storageFase.getFases().then(data => {
-        var AnyData = <[Fases]>data;
-        //se a resposta for certa e minha fase atual -->
-        if (AnyData[this.txtLiterario - 1].habilitado && !AnyData[this.txtLiterario].habilitado) {
-          AnyData[this.txtLiterario].habilitado = true;
-          this.storageFase.setFases(AnyData).then(data2 => {
-            console.log("Proxima Fase Liberada");
-          })
-        }
-      });
-    }
-    else {
-      this.respondeu = true;
-      this.respondeuErrado = true;
-      this.messagemResposta =  "Resposta errada! Por favor, tente novamente!";
+    if (this.cont_resp <= 1 && !this.acertou) {
+      if (resposta == this.resposta) {
+        this.acertou = true;
+        this.pontos = 100;
+        console.log("Resposta Certa");
+        this.respondeu = true;
+        this.respondeuCerto = true;
+        this.messagemResposta = "Resposta correta! Você fez " + this.pontos + " aprendiz! Arraste para o lado";
+        console.log(this.idEstudante);
+        this.firestore.atualizarPontos("Estudantes", this.idEstudante, this.pontos);
+        this.storageFase.getFases().then(data => {
+          var AnyData = <[Fases]>data;
+          //se a resposta for certa e minha fase atual -->
+          if (AnyData[this.txtLiterario - 1].habilitado && !AnyData[this.txtLiterario].habilitado) {
+            AnyData[this.txtLiterario].habilitado = true;
+            this.storageFase.setFases(AnyData).then(data2 => {
+              console.log("Proxima Fase Liberada");
+            })
+          }
+        });
+      }
+      else {
+        this.respondeu = true;
+        this.respondeuErrado = true;
+        this.messagemResposta = "Resposta errada! Por favor, arraste para o lado!";
+      }
+    } else {
+      this.cont_resp++;
     }
   }
 
-  compararResposta(){
+  compararResposta() {
+    this.respondeuSegunda = true;
     var str2 = "Nos mostra o conhecimento";
     var n = this.respostaTexto.localeCompare(str2);
-    if (n == 0){
+    if (n == 0) {
       console.log("Resposta Certa!");
       this.respondeuCerto = true;
       this.pontos = 50;
-      this.messagemResposta =  "Resposta correta! Você fez " + this.pontos + " aprendiz!";
-    
+      this.messagemResposta = "Resposta correta! Você fez " + this.pontos + " aprendiz!";
+
     }
-    else{
+    else {
       console.log("Tente novamente!");
-      this.messagemResposta =  "Resposta errada! Por favor, tente novamente!";
+      this.messagemResposta = "Resposta errada! Por favor, arraste para o lado!";
       this.respondeuErrado2 = true;
     }
-    console.log("string2",str2);
+    console.log("string2", str2);
     console.log("n", n);
-    this.respondeu = true;
   }
+
   next() {
     return this.slides.slideNext();
   }

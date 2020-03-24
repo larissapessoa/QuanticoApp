@@ -3,9 +3,15 @@ ion-card{
 }
 
 ion-card-header{
-    --background:rgba(35, 31, 32, 0.79);
+    // --background:rgba(35, 31, 32, 0.79);
+    --background: rgba(243, 135, 43, 0.38);
+
     --color: rgb(238, 161, 20);
    
+}
+
+.img{
+    max-width: 80px;
 }
 
 ion-card-subtitle{
@@ -35,6 +41,11 @@ ion-fab-button{
               box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.14), 0 4px 5px rgba(0, 0, 0, 0.1);
   }
 
+ion-item{
+    --border-radius: 60px;
+
+}
+/* 
 
 ion-item {
     top: 0px;
@@ -47,4 +58,4 @@ a {
 }
 ion-label {
    --background: rgba(0, 0, 0);
-}
+} */

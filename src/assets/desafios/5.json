@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "question": "refazer desafio",
+        "options": [
+            {
+                "letra": "a",
+                "option": "Estranho, Ouro, Magma"
+            },
+            {
+                "letra": "b",
+                "option": "Prata, Fósforo, Aço"
+            },
+            {
+                "letra": "c",
+                "option": "Ouro, Níquel, Aço"
+            },
+            {
+                "letra": "d",
+                "option": "Aço, Ferro, Estanho"
+            }
+        ],
+        "resposta": "d",
+        "imagem": "../assets/images/014-astronaut.png"
+    }
+]

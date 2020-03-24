@@ -1,30 +1,6 @@
 [
     {
         "id": 1,
-        "question": " Quais são as grandezas na Física?",
-        "options": [
-            {
-                "letra": "a",
-                "option": "Gelo, Ouro, Metano, Ravena, Robin"
-            },
-            {
-                "letra": "b",
-                "option": "Massa, Peso, Temperatura, Calor"
-            },
-            {
-                "letra": "c",
-                "option": "Amoeba, Conforto , Rapidez"
-            },
-            {
-                "letra": "d",
-                "option": "Distância, Dormir, Jogar"
-            }
-        ],
-        "resposta": "b",
-        "imagem": "../assets/images/009-astronaut.png"
-    },
-    {
-        "id": 1,
         "question": "Segundo o texto, quais são os estados físicos da água?",
         "options": [
             {
@@ -45,6 +21,6 @@
             }
         ],
         "resposta": "b",
-        "imagem": "../assets/images/009-astronaut.png"
+        "imagem": "../assets/images/010-astronaut.png"
     }
 ]

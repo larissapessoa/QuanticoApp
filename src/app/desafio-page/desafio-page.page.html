@@ -39,7 +39,7 @@
       <ion-card>
         <div class="screen" *ngFor="let desafio of desafio$ | async">
           <ion-card-header>
-            <img class="icon" src="{{desafio.imagem}}"/>
+            <img class="icon" src="{{desafio.imagem}}" />
             <ion-card-subtitle class="question">{{desafio.question}}</ion-card-subtitle>
           </ion-card-header>
           <ion-item *ngFor="let opts of desafio.options" class="option">
@@ -50,11 +50,11 @@
           </ion-item>
           <ion-item *ngIf="respondeu" (click)='next()'>
             <div class="animate-me" #box>
-              <img width="200" height="200" class="center" alt="" [src]="ulrImgContinuar"/>
-             </div>
-             <label>
+              <img width="200" height="200" [src]="ulrImgContinuar" />
+            </div>
+            <label>
               {{messagemResposta}}
-             </label>
+            </label>
           </ion-item>
         </div>
       </ion-card>
@@ -66,47 +66,48 @@
         <ion-card-header>
           Como recompensa por sua maestria neste desafio, ouça uma música que irá lhe ajudar nessa jornada!
         </ion-card-header>
-            <video width="240" height="240" controls>
-              <source [src]="urlVideo" type="video/mp4">
-            </video>
+        <video width="240" height="240" controls>
+          <source [src]="urlVideo" type="video/mp4">
+        </video>
       </ion-card>
     </ion-slide>
 
 
     <ion-slide *ngIf="respondeuErrado">
-      <ion-card> 
+      <ion-card>
         <div class="screen" *ngFor="let desafio of desafio$ | async">
           <ion-card-header>
-            <img class="icon1" src="{{desafio.imagem1}}"/>
+            <img class="icon1" src="{{desafio.imagem1}}" />
             <p>Complete a frase abaixo de acordo com o texto</p>
             <p>No meu humilde argumento,</p>
             <p>De tudo quanto tem massa...</p>
             <ion-item>
-            <ion-input class="reposta" type="text" [(ngModel)]="respostaTexto" ></ion-input>
+              <ion-input class="reposta" type="text" [(ngModel)]="respostaTexto"></ion-input>
+            </ion-item>
+            <ion-button type="submit" (click)="compararResposta()">Responder</ion-button>
+          </ion-card-header>
+          <ion-item *ngIf="respondeuSegunda" (click)='next()'>
+            <div class="animate-me" #box>
+              <img width="200" height="200" class="center" alt="" [src]="ulrImgContinuar" />
+            </div>
+            <label>
+              {{messagemResposta}}
+            </label>
           </ion-item>
-          <ion-button type="submit" (click)="compararResposta()">Responder</ion-button> 
-        </ion-card-header>  
-        <ion-item *ngIf="respondeu" (click)='next()'>
-          <div class="animate-me" #box>
-            <img width="200" height="200" class="center" alt="" [src]="ulrImgContinuar"/>
-           </div>
-           <label>
-            {{messagemResposta}}
-           </label>
-        </ion-item>  
         </div>
 
-      </ion-card>   
+      </ion-card>
     </ion-slide>
 
     <ion-slide *ngIf="respondeuErrado2">
-      <ion-card> 
+      <ion-card>
         <div class="screen" *ngFor="let desafio of desafio$ | async">
           <ion-card-header>
-            <img class="icon1" src="{{desafio.imagem1}}"/>
-            <p>Encontre os pares das figuras</p>      
-          <ion-button class="botao" color="light" expand="block" routerLink="/level1" routerDirection="forward">Jogo da Memoria</ion-button>
-        </ion-card-header>       
+            <img class="icon1" src="{{desafio.imagem1}}" />
+            <p>Encontre os pares das figuras</p>
+            <ion-button class="botao" color="light" expand="block" routerLink="/level1" routerDirection="forward">Jogo
+              da Memoria</ion-button>
+          </ion-card-header>
         </div>
       </ion-card>
     </ion-slide>
@@ -120,16 +121,16 @@
       <ion-tab-button tab="tab1">
         <ion-icon src="../assets/icon/home-outline.svg"></ion-icon>
       </ion-tab-button>
-  
+
       <ion-tab-button tab="tab2">
         <ion-icon src="../assets/icon/person-outline.svg"></ion-icon>
       </ion-tab-button>
-  
-      <ion-tab-button tab="tab3" >
+
+      <ion-tab-button tab="tab3">
         <ion-icon src="../assets/icon/notifications-outline.svg"></ion-icon>
       </ion-tab-button>
     </ion-tab-bar>
-  
+
   </ion-tabs>
 
 </ion-content>

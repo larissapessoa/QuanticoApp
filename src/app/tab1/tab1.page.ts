@@ -45,26 +45,15 @@ export class Tab1Page implements OnInit {
       habilitado: false
     },
     {
-      numero: 6,
+      numero: 8,
       imagem: "assets/images/019-astronaut.png",
       habilitado: false
     },
     {
-      numero: 7,
+      numero: 9,
       imagem: "assets/images/011-astronaut.png",
       habilitado: false
-    },
-    {
-      numero: 8,
-      imagem: "assets/images/015-astronaut.png",
-      habilitado: false
-    },
-    {
-      numero: 9,
-      imagem: "assets/images/014-astronaut.png",
-      habilitado: false
     }
-
   ]
 
   emailEstudante: any;
@@ -91,6 +80,10 @@ export class Tab1Page implements OnInit {
   ionViewWillEnter() {
     this.verificarDisponivel();
   }
+
+
+
+
   verificarDisponivel() {
     this.consultaFase.getFases().then(data => {
       if (data != null) {

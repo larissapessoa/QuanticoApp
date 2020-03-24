@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "question": "O Alfa é o coeficiente linear para objetos que possuem apenas comprimentos. No texto, a Professora compara o Alfa a que animal?",
+        "options": [
+            {
+                "letra": "a",
+                "option": "Peixe"
+            },
+            {
+                "letra": "b",
+                "option": "Unicórnio"
+            },
+            {
+                "letra": "c",
+                "option": "Cachorro"
+            },
+            {
+                "letra": "d",
+                "option": "Dinossauro"
+            }
+        ],
+        "resposta": "a",
+        "imagem": "../assets/images/016-astronaut.png"
+    }
+]

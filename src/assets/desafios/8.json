@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "question": "refazer",
+        "options": [
+            {
+                "letra": "a",
+                "option": "A Energia e Trabalho de uma Força"
+            },
+            {
+                "letra": "b",
+                "option": "A Força e Grandeza de uma Energia"
+            },
+            {
+                "letra": "c",
+                "option": "A Energia e a Grandeza de uma Força"
+            },
+            {
+                "letra": "d",
+                "option": "O Trabalho transformado em Energia"
+            }
+        ],
+        "resposta": "b",
+        "imagem": "../assets/images/014-astronaut.png"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "question": "Quais são as três escalas termometricas da Física?",
+        "options": [
+            {
+                "letra": "a",
+                "option": "Delta, Alfa, Fahrenheit"
+            },
+            {
+                "letra": "b",
+                "option": "Celsius, Color, Fire"
+            },
+            {
+                "letra": "c",
+                "option": "Celsius, Kelvin e Fahrenheit"
+            },
+            {
+                "letra": "d",
+                "option": "Calor, Força, Grandeza"
+            }
+        ],
+        "resposta": "c",
+        "imagem": "../assets/images/018-astronaut.png"
+    }
+]
