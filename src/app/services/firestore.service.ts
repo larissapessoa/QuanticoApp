@@ -1,9 +1,12 @@
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
+import { ToastController } from '@ionic/angular';
 
 export class FirestoreService {
 
-  constructor(protected db: AngularFirestore) { }
+  constructor(
+    protected db: AngularFirestore,
+    public toastController: ToastController) { }
 
   colecao: any;
   listCodigosTurma = new Array();
@@ -57,6 +60,14 @@ export class FirestoreService {
     return this.db.collection(colecao1).doc(docRef).collection(colecao2).snapshotChanges();
   }
 
+  getDesafiosList(docRef2, docRef) {
+    return this.db.collection("Professores").doc(docRef).collection("Turmas").doc(docRef2).collection("Desafios").snapshotChanges();
+  }
+
+  criarDesafio(docProfessor, docTurma, record){
+    return this.db.collection('Professores').doc(docProfessor).collection('Turmas').doc(docTurma).collection('Desafios').add(record);
+  }
+
   async getCodigosTurmas() {
     this.listCodigosTurma = new Array();
     this.getProfessor().subscribe(snapshot => {
@@ -72,6 +83,14 @@ export class FirestoreService {
       });
     })
     return this.listCodigosTurma;
+  }
+
+  async presentToast(message) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000
+    });
+    toast.present();
   }
 
 

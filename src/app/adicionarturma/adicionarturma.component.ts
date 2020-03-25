@@ -83,6 +83,7 @@ export class AdicionarturmaComponent implements OnInit {
     return pwd.sort(function () { return R() - .5; }).join('');
   }
 
+
   cadastrarTurma(value) {
     var prop;
     this.verificarCodigoTurma().then(codigo => {
@@ -96,11 +97,13 @@ export class AdicionarturmaComponent implements OnInit {
               console.log(res);
               this.errorMessage = "";
               this.successMessage = "Turma criada com sucesso. Comece sua jornada com seus alunos!";
+              this.firestore.presentToast(this.successMessage);
 
             }, err => {
               console.log(err);
               this.errorMessage = err.message;
               this.successMessage = "";
+              this.firestore.presentToast(this.errorMessage);
             });
         }
 

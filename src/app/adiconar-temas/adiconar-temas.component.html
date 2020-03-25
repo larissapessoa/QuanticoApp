@@ -23,7 +23,6 @@
 
     <ion-slide>
       <div class="container top">
-
         <p>
           Adicione aqui um texto literário relacionado ao tema que deseja compartilhar. Este texto, irá guiar o seu
           aprendiz por essa aventura!
@@ -88,12 +87,13 @@
          Recompense os seus aprendizes. Coloque aqui a url de um vídeo musical para auxiliar na absorção do conteúdo!
         </p>
         <img class="img" [src]="urlImgTexto" />
-        <form [formGroup]="video" (ngSubmit)="submit()">
+        <form [formGroup]="video" >
           <ion-item>
             <ion-input placeholder="Ex: https://www.youtube.com/video-exemplo" formControlName="urlVideo">
             </ion-input>
           </ion-item>
         </form>  
+        <ion-button class="submit-btn" (click)="submit()" color="danger" align-item="center" [disabled]="!video.valid">Compartilhar</ion-button>
       </div>
     </ion-slide>
 

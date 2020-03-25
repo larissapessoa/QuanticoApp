@@ -6,6 +6,9 @@
       <ion-card-subtitle>
         <ion-card-subtitle>Sala: {{infoTurma.salaTurma}}</ion-card-subtitle>
         <ion-card-title>{{infoTurma.nomeTurma}}</ion-card-title>
+        <ion-item class="item" lines="none">
+          Código da turma: {{infoTurma.codigoTurma}}
+        </ion-item>
       </ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
@@ -14,23 +17,18 @@
     </ion-card-content>
     <ion-item color="light" (click)="adicionarTemas()">
       Compartilhe um desafio com sua turma...
-    <ion-icon (click)="adicionarTemas()" name="add"></ion-icon>
-
-  </ion-item>
+      <ion-icon (click)="adicionarTemas()" name="add"></ion-icon>
+    </ion-item>
 
   </ion-card>
 
-  <!--  <img src="urlImg" class="img">
-    <div class="label">Criar um tema!</div>
-    <ion-fab>
-      <ion-fab-button>
-        <ion-icon (click)="adicionarTemas()" name="add"></ion-icon>
-      </ion-fab-button>  
-    </ion-fab> -->
-  
-
-
-
-
+  <ion-list *ngFor="let desafio of desafios" color="warning">
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img [src]="urlImg" />
+      </ion-thumbnail>
+      <ion-label>Desafio: {{desafio.Tema}}</ion-label>
+    </ion-item>
+  </ion-list>
 
 </ion-content>

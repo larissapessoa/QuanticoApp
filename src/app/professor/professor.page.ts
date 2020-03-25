@@ -71,6 +71,7 @@ export class ProfessorPage implements OnInit {
                 Nome: e.payload.doc.data()['nome_turma'],
                 Sala: e.payload.doc.data()['sala'],
                 Descricao: e.payload.doc.data()['descricao'],
+                Codigo: e.payload.doc.data()['codigo']
               };
             }) 
             console.log(this.turmas);
@@ -81,14 +82,16 @@ export class ProfessorPage implements OnInit {
     });
   }
 
-  verTurma(turma, sala, descricao){
+  verTurma(id, turma, sala, descricao, codigo){
     let navigationExtras: NavigationExtras = {
       state: {
         data: {
+          id:id,
           email: this.email,
           nome_turma: turma,
           sala: sala,
-          descricao: descricao
+          descricao: descricao,
+          codigo: codigo
         } 
       }
     };
