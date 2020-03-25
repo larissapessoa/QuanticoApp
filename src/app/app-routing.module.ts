@@ -34,6 +34,10 @@ const routes: Routes = [
   {
     path: 'level1',
     loadChildren: () => import('./level1/level1.module').then( m => m.Level1PageModule)
+  },
+  {
+    path: 'tab4',
+    loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
   }
 
 ];

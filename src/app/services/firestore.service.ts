@@ -60,6 +60,10 @@ export class FirestoreService {
     return this.db.collection(colecao1).doc(docRef).collection(colecao2).snapshotChanges();
   }
 
+  getCodigoTurma(docRefProfessor, docRefTurma) {
+    return this.db.collection("Professores").doc(docRefProfessor).collection("Turmas").doc(docRefTurma).snapshotChanges();
+  }
+
   getDesafiosList(docRef2, docRef) {
     return this.db.collection("Professores").doc(docRef).collection("Turmas").doc(docRef2).collection("Desafios").snapshotChanges();
   }

@@ -1,10 +1,11 @@
 ion-card{
-    --background: #ffffff;
+    //--background: #ffffff;
+    --background: rgb(238, 161, 20);
 }
 
 ion-card-header{
     // --background:rgba(35, 31, 32, 0.79);
-    --background: rgba(243, 135, 43, 0.38);
+   // --background: rgba(243, 135, 43, 0.38);
 
     --color: rgb(238, 161, 20);
    
@@ -18,12 +19,17 @@ ion-card-header{
     max-width: 20px;
 
 }
-
+/* 
 .item{
     --background: rgba(243, 135, 43, 0.38);
     --border-radius: 60px;
 
 
+} */
+
+.codigo{
+    --background: rgba(243, 135, 43, 0.38);
+    --border-radius: 60px;
 }
 
 ion-card-subtitle{
@@ -33,8 +39,12 @@ ion-card-subtitle{
 ion-fab-button{
     --background: rgba(243, 135, 43, 0.81);
   
-  }
-  
+}
+
+ion-card-content{
+    --color: #ffffff; 
+
+}
 
   
   .label{
@@ -54,20 +64,3 @@ ion-fab-button{
   }
 
 
-
-
-
-/* 
-
-ion-item {
-    top: 0px;
-   --background: rgba(243, 135, 43, 0.38);
-   --border-radius: 30px;
-}
-
-a {
-   --background: rgba(243, 135, 43, 0.38);
-}
-ion-label {
-   --background: rgba(0, 0, 0);
-} */
