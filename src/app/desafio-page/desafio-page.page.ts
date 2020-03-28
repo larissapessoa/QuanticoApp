@@ -38,6 +38,9 @@ export class DesafioPagePage implements OnInit {
   cont_resp: number;
   acertou: boolean;
   respondeuSegunda: any;
+  frase: string;
+  completaFrase: string;
+  level: string;
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
@@ -173,16 +176,49 @@ export class DesafioPagePage implements OnInit {
         this.respondeu = true;
         this.respondeuErrado = true;
         this.messagemResposta = "Resposta errada! Por favor, arraste para o lado!";
+        this.desafioFrases(this.txtLiterario);
       }
     } else {
       this.cont_resp++;
     }
   }
 
+
+  desafioFrases(fase) {
+    switch (fase) {
+      case 1: 
+        this.frase = "No meu humilde argumento, De tudo quanto tem massa";
+        return this.completaFrase = "Nos mostra o conhecimento";
+      case 2:
+        this.frase = "Como massa, peso e medida, Temperatura e calor...";
+        return this.completaFrase = "Com líquido, sólido e vapor";
+      case 3:
+        this.frase = "E até a aceleração, É uma força vetor....";
+        return this.completaFrase = "Módulo é o mesmo valor";
+
+  default:
+        console.log("Não possui texto");
+    }
+  }
+
+
+  jogoDaMemoria(fase) {
+   
+    if(fase == 1){
+      this.level = "/level1"
+    }else if (fase == 2){
+      this.level = "/level2"
+    }else if (fase == 3){
+      this.level = "/level3"
+    }else{
+      console.log("Não possui texto");
+    }
+  }
+
+
   compararResposta() {
     this.respondeuSegunda = true;
-    var str2 = "Nos mostra o conhecimento";
-    var n = this.respostaTexto.localeCompare(str2);
+    var n = this.respostaTexto.localeCompare(this.completaFrase);
     if (n == 0) {
       console.log("Resposta Certa!");
       this.respondeuCerto = true;
@@ -194,9 +230,11 @@ export class DesafioPagePage implements OnInit {
       console.log("Tente novamente!");
       this.messagemResposta = "Resposta errada! Por favor, arraste para o lado!";
       this.respondeuErrado2 = true;
+      this.jogoDaMemoria(this.txtLiterario);
     }
-    console.log("string2", str2);
+    console.log("string2", this.completaFrase);
     console.log("n", n);
+
   }
 
   next() {

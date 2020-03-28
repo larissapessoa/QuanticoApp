@@ -41,10 +41,10 @@
       <img src="../assets/img/cards/background.png" *ngIf="c.pos != selectCard1pos && c.pos != selectCard2pos && c.val > -1" (click)="selectCard(c.pos, c.val, i)" style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
       
         <!--Show card 1 selected-->
-      <img [src]="imageDir + images[c.val] + '.jpg'" *ngIf="c.pos == selectCard1pos && c.val > -1"  style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
+      <img [src]="imageDir + images[c.val] + '.png'" *ngIf="c.pos == selectCard1pos && c.val > -1"  style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
       
         <!--Show card 2 selected-->
-        <img [src]="imageDir + images[c.val] + '.jpg'" *ngIf="c.pos == selectCard2pos && c.val > -1"  style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
+        <img [src]="imageDir + images[c.val] + '.png'" *ngIf="c.pos == selectCard2pos && c.val > -1"  style="width:80px; height:80px; border: solid 2px #000; border-radius: 12px;">
         
         <!--Show hidden card-->
       

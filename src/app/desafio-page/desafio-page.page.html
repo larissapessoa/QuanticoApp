@@ -77,10 +77,11 @@
       <ion-card>
         <div class="screen" *ngFor="let desafio of desafio$ | async">
           <ion-card-header>
-            <img class="icon1" src="{{desafio.imagem1}}" />
+            <img class="icon1" src="{{desafio.imagem1}}"/>
             <p>Complete a frase abaixo de acordo com o texto</p>
-            <p>No meu humilde argumento,</p>
-            <p>De tudo quanto tem massa...</p>
+            <label>
+              {{frase}}
+            </label>
             <ion-item>
               <ion-input class="reposta" type="text" [(ngModel)]="respostaTexto"></ion-input>
             </ion-item>
@@ -105,7 +106,7 @@
           <ion-card-header>
             <img class="icon1" src="{{desafio.imagem1}}" />
             <p>Encontre os pares das figuras</p>
-            <ion-button class="botao" color="light" expand="block" routerLink="/level1" routerDirection="forward">Jogo
+            <ion-button class="botao" color="light" expand="block" routerLink="{{level}}" routerDirection="forward">Jogo
               da Memoria</ion-button>
           </ion-card-header>
         </div>

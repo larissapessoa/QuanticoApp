@@ -38,6 +38,14 @@ const routes: Routes = [
   {
     path: 'tab4',
     loadChildren: () => import('./tab4/tab4.module').then( m => m.Tab4PageModule)
+  },
+  {
+    path: 'level2',
+    loadChildren: () => import('./level2/level2.module').then( m => m.Level2PageModule)
+  },
+  {
+    path: 'level3',
+    loadChildren: () => import('./level3/level3.module').then( m => m.Level3PageModule)
   }
 
 ];

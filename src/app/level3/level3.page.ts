@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ServicostorageService } from '../services/servicostorage.service';
-import {DesafioPagePage} from 'src/app/desafio-page/desafio-page.page';
 
 @Component({
-  selector: 'app-level1',
-  templateUrl: './level1.page.html',
-  styleUrls: ['./level1.page.scss'],
+  selector: 'app-level3',
+  templateUrl: './level3.page.html',
+  styleUrls: ['./level3.page.scss'],
 })
-export class Level1Page implements OnInit {
+export class Level3Page implements OnInit {
 
   public gameState;  // Keep track of current game state
   public startGame;  // Will set to false to display intro
@@ -21,10 +19,8 @@ export class Level1Page implements OnInit {
   public cardsTotal = 12; //Total de cartas para combinação (dividida por 2)
   public cardsArray = []; //Armazena todos os pares de carta
   public userLife = 10; // Total de tentativas por usuario
-  public imageDir = '../assets/img/desafio1/';
+  public imageDir = '../assets/img/desafio3/';
   public images = ['001', '002', '003', '004', '005', '006', '007', '008'];
-
-
 
   public selectCard1pos = -1; // Selected card #1 position
   public selectCard1val = -1; //Selected card #1 
@@ -33,15 +29,16 @@ export class Level1Page implements OnInit {
   public selectOldPosix = -1; // Store old position
 
   public debugText = "Debug text goes here! :)"
+
   constructor() { }
 
   ngOnInit() {
     this.restartGame();
   }
 
-  // function to populate cards array with position and value pairs from 0 to 6
+   // function to populate cards array with position and value pairs from 0 to 6
 
-  populateCards(){
+   populateCards(){
     this.cardsArray = [];
     var x = 0;
     var y = 0;
@@ -199,5 +196,4 @@ export class Level1Page implements OnInit {
   this.selectCard2pos = -1; // Selected card #2 position
   this.selectCard2val = -1; //Selected card #2 value
   }
-
 }
