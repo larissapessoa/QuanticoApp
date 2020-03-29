@@ -24,6 +24,10 @@
         <ion-tab-button tab="tab2">
           <ion-icon src="../assets/icon/person-outline.svg"></ion-icon>
         </ion-tab-button>
+        
+        <ion-tab-button tab="tab4">
+          <ion-icon src="../assets/icon/school-outline.svg"></ion-icon>
+        </ion-tab-button>
     
         <ion-tab-button tab="tab3" >
           <ion-icon src="../assets/icon/notifications-outline.svg"></ion-icon>
@@ -89,7 +93,7 @@
     <div *ngIf="gameState == 'win'">
 
       <br>
-      <p>Você <span style="color: #08cc00; font-size: 24px;">GANHOU</span></p>
+      <p>Você <span style="color: #08cc00; font-size: 24px;">GANHOU! A próxima fase já está disponível, continue sua jornada!</span></p>
        <p>Deseja jogar novamente?</p>
        <br>
        <ion-button size="large" color="danger" (click)="restartGame()">

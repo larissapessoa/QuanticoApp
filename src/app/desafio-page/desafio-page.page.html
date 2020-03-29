@@ -69,7 +69,14 @@
         <video width="240" height="240" controls>
           <source [src]="urlVideo" type="video/mp4">
         </video>
+        <ion-card-content>
+          <ion-item (click)="voltarHome()">
+            <p> A nova fase já está habilitada! Venha conferir.</p>
+          </ion-item>
+        </ion-card-content>
+       
       </ion-card>
+      
     </ion-slide>
 
 
@@ -77,7 +84,7 @@
       <ion-card>
         <div class="screen" *ngFor="let desafio of desafio$ | async">
           <ion-card-header>
-            <img class="icon1" src="{{desafio.imagem1}}"/>
+            <img class="icon1" src="{{desafio.imagem1}}" />
             <p>Complete a frase abaixo de acordo com o texto</p>
             <label>
               {{frase}}

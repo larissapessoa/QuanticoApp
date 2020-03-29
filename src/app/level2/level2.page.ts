@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServicostorageService } from '../services/servicostorage.service';
 
 @Component({
   selector: 'app-level2',
@@ -28,10 +29,14 @@ export class Level2Page implements OnInit {
   public selectCard2pos = -1; // Selected card #2 position
   public selectCard2val = -1; //Selected card #2 value
   public selectOldPosix = -1; // Store old position
+  id = 2;
 
   public debugText = "Debug text goes here! :)"
 
-  constructor() { }
+  constructor(
+    public storage: ServicostorageService
+
+  ) { }
 
   ngOnInit() {
     this.restartGame();
@@ -182,7 +187,22 @@ export class Level2Page implements OnInit {
     // if winCheck is false, player has won the game
 
     if (winCheck == false) this.gameState = 'win';
+    this.habilitarFase();
   }
+
+  habilitarFase(){
+    this.storage.getFases().then(data => {
+      var AnyData = <[Fases]>data;
+      //se a resposta for certa e minha fase atual -->
+      if (AnyData[this.id - 1].habilitado && !AnyData[this.id].habilitado) {
+        AnyData[this.id].habilitado = true;
+        this.storage.setFases(AnyData).then(data2 => {
+          console.log("Proxima Fase Liberada");
+        })
+      }
+    });
+  }
+
 
   // Lose Condition
   loseCon() {
@@ -198,4 +218,11 @@ export class Level2Page implements OnInit {
   this.selectCard2val = -1; //Selected card #2 value
   }
 
+}
+
+
+interface Fases {
+  numero: number,
+  imagem: string,
+  habilitado: boolean
 }

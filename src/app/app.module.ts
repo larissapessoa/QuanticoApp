@@ -23,6 +23,7 @@ import { FirestoreService } from './services/firestore.service';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { Tab1Page } from './tab1/tab1.page';
+import { DesafioPagePage } from './desafio-page/desafio-page.page';
 
 
 firebase.initializeApp(environment.firebase);
@@ -40,6 +41,7 @@ firebase.initializeApp(environment.firebase);
     LogicProvider,
     FirestoreService,
     Tab1Page,
+    DesafioPagePage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   exports: [FormsModule, ReactiveFormsModule],

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ServicostorageService } from '../services/servicostorage.service';
-import {DesafioPagePage} from 'src/app/desafio-page/desafio-page.page';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-level1',
@@ -23,7 +23,7 @@ export class Level1Page implements OnInit {
   public userLife = 10; // Total de tentativas por usuario
   public imageDir = '../assets/img/desafio1/';
   public images = ['001', '002', '003', '004', '005', '006', '007', '008'];
-
+  id = 1;
 
 
   public selectCard1pos = -1; // Selected card #1 position
@@ -33,7 +33,9 @@ export class Level1Page implements OnInit {
   public selectOldPosix = -1; // Store old position
 
   public debugText = "Debug text goes here! :)"
-  constructor() { }
+  constructor(
+    public storage: ServicostorageService
+    ) {}
 
   ngOnInit() {
     this.restartGame();
@@ -184,6 +186,24 @@ export class Level1Page implements OnInit {
     // if winCheck is false, player has won the game
 
     if (winCheck == false) this.gameState = 'win';
+    console.log(this.id);
+    this.habilitarFase();
+    
+
+  
+  }
+
+  habilitarFase(){
+    this.storage.getFases().then(data => {
+      var AnyData = <[Fases]>data;
+      //se a resposta for certa e minha fase atual -->
+      if (AnyData[this.id - 1].habilitado && !AnyData[this.id].habilitado) {
+        AnyData[this.id].habilitado = true;
+        this.storage.setFases(AnyData).then(data2 => {
+          console.log("Proxima Fase Liberada");
+        })
+      }
+    });
   }
 
   // Lose Condition
@@ -199,5 +219,13 @@ export class Level1Page implements OnInit {
   this.selectCard2pos = -1; // Selected card #2 position
   this.selectCard2val = -1; //Selected card #2 value
   }
+  
+ 
+}
 
+
+interface Fases {
+  numero: number,
+  imagem: string,
+  habilitado: boolean
 }

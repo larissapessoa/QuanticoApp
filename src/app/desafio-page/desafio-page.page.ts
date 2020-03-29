@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LogicProvider } from './services/logic.service';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, NavController } from '@ionic/angular';
 import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
 import { FirestoreService } from '../services/firestore.service';
@@ -50,6 +50,8 @@ export class DesafioPagePage implements OnInit {
     public _logic: LogicProvider,
     private storageFase: ServicostorageService,
     private firestore: FirestoreService,
+    private navCtrl: NavController
+
 
 
   ) { }
@@ -176,6 +178,18 @@ export class DesafioPagePage implements OnInit {
     }
   }
 
+  habilitarFase(){
+    this.storageFase.getFases().then(data => {
+      var AnyData = <[Fases]>data;
+      //se a resposta for certa e minha fase atual -->
+      if (AnyData[this.txtLiterario - 1].habilitado && !AnyData[this.txtLiterario].habilitado) {
+        AnyData[this.txtLiterario].habilitado = true;
+        this.storageFase.setFases(AnyData).then(data2 => {
+          console.log("Proxima Fase Liberada");
+        })
+      }
+    });
+  }
 
   desafioFrases(fase) {
     switch (fase) {
@@ -198,11 +212,11 @@ export class DesafioPagePage implements OnInit {
   jogoDaMemoria(fase) {
    
     if(fase == 1){
-      this.level = "/level1"
+      this.level = "/level1/";
     }else if (fase == 2){
-      this.level = "/level2"
+      this.level = "/level2/";
     }else if (fase == 3){
-      this.level = "/level3"
+      this.level = "/level3/";
     }else{
       console.log("Não possui texto");
     }
@@ -216,6 +230,8 @@ export class DesafioPagePage implements OnInit {
       console.log("Resposta Certa!");
       this.respondeuCerto = true;
       this.pontos = 50;
+      this.firestore.atualizarPontos("Estudantes", this.idEstudante, this.pontos);
+      this.habilitarFase();
       this.messagemResposta = "Resposta correta! Você fez " + this.pontos + " aprendiz!";
 
     }
@@ -227,6 +243,11 @@ export class DesafioPagePage implements OnInit {
     }
     console.log("string2", this.completaFrase);
     console.log("n", n);
+
+  }
+
+  voltarHome(){
+    this.navCtrl.navigateForward('/tabs');
 
   }
 
