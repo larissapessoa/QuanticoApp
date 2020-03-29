@@ -16,4 +16,12 @@ export class ServicostorageService {
     return this.storage.set('fases', arrayProds);
 
   }
+
+  async setEmail(email){
+    return this.storage.set('email', email);
+  }
+
+  getEmail(){
+    return this.storage.get('email');
+  }
 }

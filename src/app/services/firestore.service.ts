@@ -43,6 +43,8 @@ export class FirestoreService {
     })
   }
 
+  
+
   criar(Colecoes, record) {
     return this.db.collection(Colecoes).add(record);
   }
@@ -60,16 +62,20 @@ export class FirestoreService {
     return this.db.collection(colecao1).doc(docRef).collection(colecao2).snapshotChanges();
   }
 
-  getCodigoTurma(docRefProfessor, docRefTurma) {
-    return this.db.collection("Professores").doc(docRefProfessor).collection("Turmas").doc(docRefTurma).snapshotChanges();
-  }
-
   getDesafiosList(docRef2, docRef) {
     return this.db.collection("Professores").doc(docRef).collection("Turmas").doc(docRef2).collection("Desafios").snapshotChanges();
   }
 
   criarDesafio(docProfessor, docTurma, record){
     return this.db.collection('Professores').doc(docProfessor).collection('Turmas').doc(docTurma).collection('Desafios').add(record);
+  }
+
+  adicionarEstudanteTurma(docProfessor, docTurma, record){
+    return this.db.collection('Professores').doc(docProfessor).collection('Turmas').doc(docTurma).collection("Estudantes").add(record);
+  }
+
+  adicionarTurmaEstudante(docEstudante, record){
+    return this.db.collection('Estudantes').doc(docEstudante).collection("Turmas").add(record);
   }
 
   async getCodigosTurmas() {

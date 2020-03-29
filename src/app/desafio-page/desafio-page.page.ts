@@ -84,14 +84,7 @@ export class DesafioPagePage implements OnInit {
 
     this.urlVideo = 'assets/video/' + this.txtLiterario + '.mp4';
 
-   /*   //this.changeBackground = true;
-    var urlTxt = 'assets/textos/' + this.txtLiterario.id +'.pdf';
-    console.log('urlTxt', urlTxt);
-    
-    this.document.viewDocument('file:///android_asset/www/assets/1.pdf', 'application/pdf', options) */;
-
-    //this.urlTxt = 'assets/textos/' + this.txtLiterario.id +'.pdf';
-
+  
   }
 
 

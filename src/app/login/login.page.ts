@@ -4,6 +4,8 @@ import { NavController } from '@ionic/angular';
 import { AuthenticationService } from '../services/authentication.service';
 import { FirestoreService } from '../services/firestore.service';
 import { NavigationExtras } from '@angular/router';
+import { Tab1Page } from '../tab1/tab1.page';
+import { ServicostorageService } from '../services/servicostorage.service';
 
 
 @Component({
@@ -20,7 +22,9 @@ export class LoginPage implements OnInit {
     private firestore: FirestoreService,
     private navCtrl: NavController,
     private authService: AuthenticationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private storage: ServicostorageService
+
 
   ) { }
 
@@ -74,6 +78,7 @@ export class LoginPage implements OnInit {
         });
         if (!professor){
           navigationExtras.state.data = value.email;
+          this.storage.setEmail(value.email);
           this.navCtrl.navigateForward('/tabs', navigationExtras);
         }
         else this.navCtrl.navigateForward('/professor', navigationExtras);
