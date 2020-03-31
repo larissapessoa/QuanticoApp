@@ -6,7 +6,8 @@ import { IonSlides, NavController } from '@ionic/angular';
 import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
 import { FirestoreService } from '../services/firestore.service';
-import { AstMemoryEfficientTransformer } from '@angular/compiler';
+import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+
 //import { triggerAsyncId } from 'async_hooks';
 
 @Component({
@@ -41,6 +42,7 @@ export class DesafioPagePage implements OnInit {
   frase: string;
   completaFrase: string;
   level: string;
+  talkback: any;
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
@@ -50,7 +52,8 @@ export class DesafioPagePage implements OnInit {
     public _logic: LogicProvider,
     private storageFase: ServicostorageService,
     private firestore: FirestoreService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private mobileAccessibility: MobileAccessibility
 
 
 
@@ -85,7 +88,8 @@ export class DesafioPagePage implements OnInit {
     })
 
     this.urlVideo = 'assets/video/' + this.txtLiterario + '.mp4';
-
+    this.talkback = this.mobileAccessibility.isTalkBackRunning();
+    console.log("talkback", this.talkback);
   
   }
 
@@ -255,18 +259,20 @@ export class DesafioPagePage implements OnInit {
     return this.slides.slideNext();
   }
 
-  doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
-  }
+  
 
   prev() {
     this.slides.slidePrev();
   }
+
+  isTalkBackRunningCallback(boolean) {
+    if (boolean) {
+        console.log("Screen reader: ON");
+        // Do something to improve the behavior of the application while a screen reader is active.
+    } else {
+        console.log("Screen reader: OFF");
+    }
+}
 }
 
 export interface IData {
