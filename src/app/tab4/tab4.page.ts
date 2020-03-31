@@ -149,7 +149,7 @@ export class Tab4Page implements OnInit {
                   };
                   console.log(turmaEncontrada);
                   this.turmasEstudante.push(turmaEncontrada);
-
+                  console.log("aqui", this.turmasEstudante.length);
                 }
               })
 
@@ -159,7 +159,7 @@ export class Tab4Page implements OnInit {
         })
       })
     })
-    this.semTurmasCadastradas();
+    //this.semTurmasCadastradas();
     
 
   }

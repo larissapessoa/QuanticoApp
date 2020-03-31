@@ -115,6 +115,16 @@ export class Tab1Page implements OnInit {
     });
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      this.verificarDisponivel();
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
 }
 
 

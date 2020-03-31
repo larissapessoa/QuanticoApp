@@ -13,6 +13,12 @@ ion-row {
   bottom: 88.6%;
 }
 
+ion-refresher ion-refresher-content {
+  background: #FFF !important;
+ --color: #000;
+ 
+}
+
 .img{
   max-width: 30px;
  
@@ -32,6 +38,7 @@ ion-fab-button{
 .label{
   font-size: larger;
 }
+
 
 // .pos{
 //   top: 50px;
