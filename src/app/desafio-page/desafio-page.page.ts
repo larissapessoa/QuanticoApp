@@ -255,6 +255,15 @@ export class DesafioPagePage implements OnInit {
     return this.slides.slideNext();
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
   prev() {
     this.slides.slidePrev();
   }
