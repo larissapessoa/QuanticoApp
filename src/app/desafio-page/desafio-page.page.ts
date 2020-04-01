@@ -7,6 +7,7 @@ import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
 import { FirestoreService } from '../services/firestore.service';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 //import { triggerAsyncId } from 'async_hooks';
 
@@ -53,7 +54,8 @@ export class DesafioPagePage implements OnInit {
     private storageFase: ServicostorageService,
     private firestore: FirestoreService,
     private navCtrl: NavController,
-    private mobileAccessibility: MobileAccessibility
+    //private mobileAccessibility: MobileAccessibility
+    private tts: TextToSpeech
 
 
 
@@ -88,8 +90,9 @@ export class DesafioPagePage implements OnInit {
     })
 
     this.urlVideo = 'assets/video/' + this.txtLiterario + '.mp4';
-    this.talkback = this.mobileAccessibility.isTalkBackRunning();
-    console.log("talkback", this.talkback);
+    //this.talkback = this.mobileAccessibility.isTalkBackRunning();
+    //console.log("talkback", this.talkback);
+    //this.isTalkBackRunningCallback(this.talkback);
   
   }
 
@@ -180,6 +183,31 @@ export class DesafioPagePage implements OnInit {
     } else {
       this.cont_resp++;
     }
+  }
+
+  async lerTexto(){
+    let texto: string;
+    texto = "";
+    this.questions$.forEach(linha =>{
+      linha.forEach(l =>{
+         texto = texto + " " + l.question;
+         console.log("dentro", texto);
+
+      })
+    }).finally(()=>{
+      this.tts.speak({
+        text: texto,
+        locale: 'pt-BR',
+        rate: 0.75
+    
+      }); 
+    })
+    console.log(texto);
+  }
+
+  pararLeitura(){
+    this.tts.speak("").then((value)=>{
+      });
   }
 
   habilitarFase(){

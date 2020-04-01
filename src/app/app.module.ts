@@ -25,6 +25,7 @@ import { AngularFireModule } from '@angular/fire';
 import { Tab1Page } from './tab1/tab1.page';
 import { DesafioPagePage } from './desafio-page/desafio-page.page';
 import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
+import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
 
 
 firebase.initializeApp(environment.firebase);
@@ -43,6 +44,7 @@ firebase.initializeApp(environment.firebase);
     FirestoreService,
     Tab1Page,
     DesafioPagePage,
+    TextToSpeech,
     MobileAccessibility,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
