@@ -1,12 +1,6 @@
 <ion-content>
 
-  <ion-item>
-    <ion-label>Modo Planeta Escuro</ion-label>
-    <!-- <ion-img [src]="assets/images/astrology.png"></ion-img> -->
-    <ion-toggle color="dark"></ion-toggle>
-  </ion-item>
 
- 
 
   <ion-slides>
 
@@ -48,10 +42,11 @@
             <img class="icon" src="{{desafio.imagem}}" />
             <ion-card-subtitle class="question">{{desafio.question}}</ion-card-subtitle>
           </ion-card-header>
-          <ion-item *ngFor="let opts of desafio.options" class="option">
+          <ion-item *ngFor="let opts of desafio.options" >
             <ion-card-content (click)="callAnime(opts.letra)">
-              <span> {{opts.letra}} .</span>
-              {{opts.option}}
+              <div> 
+                {{opts.letra}} . {{opts.option}} 
+              </div>
             </ion-card-content>
           </ion-item>
           <ion-item *ngIf="respondeu" (click)='next()'>

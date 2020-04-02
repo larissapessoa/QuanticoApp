@@ -5,6 +5,11 @@
     </ion-title>
     <ion-icon (click)="sair()"  slot="end" src="../assets/icon/log-out-outline.svg"></ion-icon>
   </ion-toolbar>
+  <ion-item>
+    <ion-label>Modo Planeta Escuro</ion-label>
+    <!-- <ion-img [src]="assets/images/astrology.png"></ion-img> -->
+    <ion-toggle (ionChange)="change($event)" color="dark"></ion-toggle>
+  </ion-item>
 </ion-header>
 
 <ion-content>
@@ -14,8 +19,6 @@
       refreshingText="Atualizando...">
     </ion-refresher-content>
   </ion-refresher>
-
-
   <!-- <ion-card class="welcome-card">
       <img src="/assets/logoQuantico.jpeg" alt="" />
       <ion-card-header>
@@ -27,28 +30,31 @@
       </ion-card-content>
     </ion-card> -->
 
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngFor="let fase of fases let i=index;" size=4>
-        <img [src]="fase.imagem" class="img">
-        <ion-fab>
-          <div *ngIf="fase.habilitado">
-            <ion-fab-button (click)="abrirDesafio(fase.numero)">
-              <ion-label *ngIf="fase.habilitado" class="label">
-                {{fase.numero}}
-              </ion-label>
-            </ion-fab-button>
-          </div>
-          <div *ngIf="!fase.habilitado">
-            <ion-fab-button disabled>
-              <ion-icon src="../assets/icon/lock1.svg"></ion-icon>
-            </ion-fab-button>
-          </div>
-        </ion-fab>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+      <ion-grid>
+        <ion-row>
+          <ion-col *ngFor="let fase of fases let i=index;" size=4>
+            <img [src]="fase.imagem" class="img">
+            <ion-fab>
+              <div *ngIf="fase.habilitado">
+                <ion-fab-button (click)="abrirDesafio(fase.numero)">
+                  <ion-label *ngIf="fase.habilitado" class="label">
+                    {{fase.numero}}
+                  </ion-label>
+                </ion-fab-button>
+              </div>
+              <div *ngIf="!fase.habilitado">
+                <ion-fab-button disabled>
+                  <ion-icon src="../assets/icon/lock1.svg"></ion-icon>
+                </ion-fab-button>
+              </div>
+            </ion-fab>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    
 
+ 
+  
 
 
 

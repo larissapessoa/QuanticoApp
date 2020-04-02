@@ -3,6 +3,7 @@ import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ServicostorageService } from '../services/servicostorage.service';
 import { FirestoreService } from '../services/firestore.service';
 import { AuthenticationService } from '../services/authentication.service';
+import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-tab1',
@@ -67,8 +68,7 @@ export class Tab1Page implements OnInit {
     private route: ActivatedRoute,
     private firestore: FirestoreService,
     private authService: AuthenticationService,
-
-
+    private themeService: ThemeService
   ) { }
 
   ngOnInit() {
@@ -84,6 +84,9 @@ export class Tab1Page implements OnInit {
     this.verificarDisponivel();
   }
 
+  change(){
+    this.themeService.toggleAppTheme();
+  }
 
 
 
