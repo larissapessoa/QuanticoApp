@@ -84,6 +84,7 @@ export class Tab4Page implements OnInit {
     });
   }
 
+
   async procurarTurmas(codigoT) {
     this.estudante();
     this.firestore.getProfessor().subscribe(snapshot => {
