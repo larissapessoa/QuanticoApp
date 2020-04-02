@@ -3,6 +3,8 @@ import { AdicionarturmaComponent } from '../adicionarturma/adicionarturma.compon
 import { ModalController, NavController } from '@ionic/angular';
 import { FirestoreService } from '../services/firestore.service';
 import { ActivatedRoute, Router, NavigationExtras } from '@angular/router';
+import { AuthenticationService } from '../services/authentication.service';
+
 
 @Component({
   selector: 'app-professor',
@@ -22,6 +24,7 @@ export class ProfessorPage implements OnInit {
     private route: ActivatedRoute,
     public router: Router,
     private navCtrl: NavController,
+    private authService: AuthenticationService
 
   ) { }
 
@@ -99,6 +102,12 @@ export class ProfessorPage implements OnInit {
 
     this.navCtrl.navigateForward('/turma-page', navigationExtras);
   }
+
+
+  sair(){
+    this.authService.logoutUser();
+  }
+
 
 
 }

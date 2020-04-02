@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 import { ServicostorageService } from '../services/servicostorage.service';
 import { FirestoreService } from '../services/firestore.service';
+import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
   selector: 'app-tab1',
@@ -65,6 +66,8 @@ export class Tab1Page implements OnInit {
     private consultaFase: ServicostorageService,
     private route: ActivatedRoute,
     private firestore: FirestoreService,
+    private authService: AuthenticationService,
+
 
   ) { }
 
@@ -113,6 +116,10 @@ export class Tab1Page implements OnInit {
       };
       this.router.navigate(['/desafio-page'], navigationExtras);
     });
+  }
+  
+  sair(){
+    this.authService.logoutUser();
   }
 
   doRefresh(event) {
