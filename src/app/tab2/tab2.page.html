@@ -7,14 +7,26 @@
 </ion-header>
 
 <ion-content>
-  <img src="../assets/images/perfil.png" width="150" height="150" class="center" alt="">
 
   <form  class="form">
+    <ion-avatar>
+      <img src="../assets/images/semFoto.png" width="150" height="150" class="center" alt="">
+    </ion-avatar>
+    <button (click)="optionC()">Mudar Foto</button>
+    
     <ion-item>
-    <ion-label color="danger">Astronauta</ion-label>
+    <ion-label color="danger">{{emailEstudante}}</ion-label>
     </ion-item>
     <ion-item>
-      <ion-label class="pontos">Pontuação: {{pontos}}</ion-label>
+      <ion-label class="pontos">Pontuação: {{pontos}} </ion-label>
+    </ion-item>  
+    <div *ngIf="option == 'sim'">
+      <ion-item>
+        <ion-avatar>
+          <img src="../assets/images/001-astronaut.png" width="150" height="150" class="center" alt="" (click)="mudarFoto(1)">
+        </ion-avatar>
       </ion-item>
+    </div>
   </form>
+
 </ion-content>

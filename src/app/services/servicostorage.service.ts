@@ -6,6 +6,11 @@ import { Storage } from '@ionic/storage';
 })
 export class ServicostorageService {
 
+ 
+  get: any;
+  upload: any;
+  ref: any;
+
   constructor(public storage: Storage) {
   }
   getFases() {

@@ -44,7 +44,7 @@ firebase.initializeApp(environment.firebase);
     Tab1Page,
     DesafioPagePage,
     TextToSpeech,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   exports: [FormsModule, ReactiveFormsModule],
   bootstrap: [AppComponent]
