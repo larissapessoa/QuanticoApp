@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Platform } from '@ionic/angular';
+import { Platform, AlertController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import * as firebase from 'firebase/app';
@@ -9,6 +9,7 @@ import { FirestoreService } from './services/firestore.service';
 import { NavigationExtras } from '@angular/router';
 import { ServicostorageService } from './services/servicostorage.service';
 import { NavController } from '@ionic/angular';
+
 
 
 
@@ -26,8 +27,16 @@ export class AppComponent {
     private firestore: FirestoreService,
     private navCtrl: NavController,
     private storage: ServicostorageService,
+    private alertCtrl: AlertController,
   ) {
     this.initializeApp();
+    platform.ready().then(() => {
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      statusBar.styleDefault();
+      splashScreen.hide();
+      
+    });
   }
 
   initializeApp() {
@@ -66,5 +75,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
     });
   }
+
+
+  
 }
 

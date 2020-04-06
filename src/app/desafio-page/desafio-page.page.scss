@@ -22,10 +22,8 @@ ion-fab{
 
 
 .center {
-    margin-left: auto;
-    margin-right: auto;
-    display: contents;
-    max-width: 50px;
+    display: run-in;
+    max-width: 10px;
 }
 
 .option{
@@ -33,7 +31,7 @@ ion-fab{
 }
 
 ion-tabs {
-    display: contents;
+    display: run-in;
 }
 
 .icon {

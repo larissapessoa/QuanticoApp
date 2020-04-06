@@ -25,6 +25,7 @@ import { AngularFireModule } from '@angular/fire';
 import { Tab1Page } from './tab1/tab1.page';
 import { DesafioPagePage } from './desafio-page/desafio-page.page';
 import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 
 firebase.initializeApp(environment.firebase);
@@ -44,6 +45,7 @@ firebase.initializeApp(environment.firebase);
     Tab1Page,
     DesafioPagePage,
     TextToSpeech,
+    LocalNotifications,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   exports: [FormsModule, ReactiveFormsModule],
