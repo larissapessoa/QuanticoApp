@@ -43,8 +43,6 @@ export class FirestoreService {
     })
   }
 
-  
-
   criar(Colecoes, record) {
     return this.db.collection(Colecoes).add(record);
   }

@@ -53,12 +53,15 @@ export class AppComponent {
             if (!professor) {
               navigationExtras.state.data = user.email;
               this.navCtrl.navigateForward('/tabs', navigationExtras);
+              //this.router.navigate(['/tabs'], navigationExtras);
             }
             else this.navCtrl.navigateForward('/professor', navigationExtras);
+            //else this.router.navigate(['/professor'], navigationExtras);
           });
         }
         else {
-          this.router.navigate(["/login"]);
+         // this.router.navigate(["/login"]);
+          this.navCtrl.navigateForward('/login');
           this.statusBar.styleLightContent();
           this.splashScreen.hide();
         }

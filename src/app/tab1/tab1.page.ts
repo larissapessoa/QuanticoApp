@@ -101,6 +101,7 @@ export class Tab1Page implements OnInit {
       }
     });
   }
+  
   abrirDesafio(numero: number) {
     this.firestore.getEstudantes().subscribe(snapshot => {
       snapshot.forEach(doc => {

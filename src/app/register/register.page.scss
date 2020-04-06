@@ -8,10 +8,12 @@ ion-item {
 }
 
 ion-button {
-    --background:  rgb(245, 177, 51);
-    --border-radius: 10px;
-}
-
+    top: 50 px;
+    --background: rgba(243, 135, 43);
+    --border-radius: 30px;
+ 
+ }
+ 
 ion-label {
     --background:  rgb(255, 255, 255);
 }

@@ -46,6 +46,10 @@ const routes: Routes = [
   {
     path: 'level3',
     loadChildren: () => import('./level3/level3.module').then( m => m.Level3PageModule)
+  },
+  {
+    path: 'desafios-turma',
+    loadChildren: () => import('./desafios-turma/desafios-turma.module').then( m => m.DesafiosTurmaPageModule)
   }
 
 ];

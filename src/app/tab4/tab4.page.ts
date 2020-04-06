@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { FirestoreService } from '../services/firestore.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { Tab1Page } from '../tab1/tab1.page';
 import { ServicostorageService } from '../services/servicostorage.service';
 
@@ -21,18 +21,23 @@ export class Tab4Page implements OnInit {
   errorMessage: any;
   successMessage: any;
   turmasEstudante = [] as any;
+  desafios = [] as any;
+  ulrImage: any;
 
 
   constructor(
     public alertController: AlertController,
     public firestore: FirestoreService,
     public tab1: Tab1Page,
-    private storage: ServicostorageService
+    private storage: ServicostorageService,
+    private router: Router
+
 
 
   ) { }
 
   ngOnInit() {
+    this.ulrImage =  "assets/images/010-astronaut.png";
     this.storage.getEmail().then(data => {
       this.emailEstudante = data;
     })
@@ -118,10 +123,6 @@ export class Tab4Page implements OnInit {
                 this.successMessage = "";
                 this.firestore.presentToast(this.errorMessage);
               });
-
-
-
-
             }
           })
         })
@@ -140,9 +141,10 @@ export class Tab4Page implements OnInit {
             turmasTotal.forEach(professorTurma => {
               professorTurma.map(e => {
                 if (e.payload.doc.id == codigo.payload.doc.data()['idTurma']) {
-                  console.log("entrei no if")
+                  console.log("entrei no if", codigo.payload.doc.data());
                   let turmaEncontrada = {
                     id: e.payload.doc.id,
+                    idProfessor: doc.id,
                     Nome: e.payload.doc.data()['nome_turma'],
                     Sala: e.payload.doc.data()['sala'],
                     Descricao: e.payload.doc.data()['descricao'],
@@ -152,6 +154,7 @@ export class Tab4Page implements OnInit {
                   this.turmasEstudante.push(turmaEncontrada);
                   console.log("aqui", this.turmasEstudante.length);
                 }
+                
               })
 
             })
@@ -173,6 +176,47 @@ export class Tab4Page implements OnInit {
       this.firestore.presentToast("Você ainda não se cadastrou em nenhuma turma");
     }
   }
+
+  verTurma(id, idProfessor, Nome, Sala, Descricao, Codigo){
+    this.firestore.getDesafiosList(id, idProfessor).subscribe(data => {
+      this.desafios = data.map(e => {
+        return {
+          id: e.payload.doc.id,
+          Desafio: e.payload.doc.data()['desafio'],
+          Tema: e.payload.doc.data()['tema'],
+          Texto: e.payload.doc.data()['texto'],
+          Video: e.payload.doc.data()['video']
+        };
+      }) 
+      console.log("desafios", this.desafios);
+      let navigationExtras: NavigationExtras = {
+        state: {
+          data: {
+            Nome: Nome,
+            Sala: Sala,
+            Descricao: Descricao,
+            Codigo: Codigo,
+            Desafios: this.desafios
+          }
+        }
+      };
+      this.router.navigate(['/desafios-turma'], navigationExtras);
+      
+
+
+
+    })
+
+
+
+      
+  }
+  
+  
+  
+
+
+
 
 
 }

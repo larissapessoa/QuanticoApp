@@ -10,12 +10,12 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="listarTurmas()" color="warning">
+  <ion-button expand="block" (click)="listarTurmas()" color="warning">
   Listar turmas
   </ion-button>
 
   <ion-list *ngFor = "let turma of turmasEstudante">
-    <ion-card (click)="verTurma(turma.id, turma.Nome, turma.Sala, turma.Descricao, turma.Codigo)">
+    <ion-card (click)="verTurma(turma.id, turma.idProfessor, turma.Nome, turma.Sala, turma.Descricao, turma.Codigo)">
       <ion-card-header>
         <img class="icon" class="img" [src]="urlImg"/>
         <ion-card-subtitle>Sala: {{turma.Sala}}</ion-card-subtitle>

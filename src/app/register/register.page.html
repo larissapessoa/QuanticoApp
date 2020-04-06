@@ -1,9 +1,3 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Registre-se</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content padding>
   <div class="container top">
     <img src="../assets/images/logoQuanticoApp.jpg" width="200" height="200" class="center" alt="">
@@ -35,16 +29,16 @@
       </div>
 
       <!-- Checkboxes in a List -->
-      <ion-list>
-        <ion-item>
-          <ion-select placeholder="Modo usuario" formControlName="usuario">
-            <ion-select-option value="Professores">Professor</ion-select-option>
-            <ion-select-option value="Estudantes">Estudante</ion-select-option>
-          </ion-select>
-        </ion-item>
-      </ion-list>
+      <ion-item>
+        <ion-label>Você é...</ion-label>
+        <ion-select expand="block" formControlName="usuario">
+          <ion-select-option value="Professores">Professor</ion-select-option>
+          <ion-select-option value="Estudantes">Estudante</ion-select-option>
+        </ion-select>
+      </ion-item>
 
-      <ion-button class="submit-btn" type="submit" [disabled]="!validations_form.valid">Cadastrar</ion-button>
+      <ion-button expand="block" class="submit-btn" type="submit" [disabled]="!validations_form.valid">Cadastrar
+      </ion-button>
       <label class="error-message">{{errorMessage}}</label>
       <label class="success-message">{{successMessage}}</label>
     </form>
