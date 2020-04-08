@@ -65,7 +65,6 @@ export class TurmaPagePage implements OnInit {
   }
 
   listarDesafios() {
-
     this.firestore.getProfessor().subscribe(snapshot => {
       snapshot.forEach(doc => {
         if (doc.data().email == this.infoTurma.emailProfessor) {

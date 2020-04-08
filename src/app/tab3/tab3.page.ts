@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 import {DesafioPagePage} from 'src/app/desafio-page/desafio-page.page';
 
 
@@ -14,14 +13,13 @@ export class Tab3Page implements OnInit {
 
   notificacao: string;
   constructor(
-    private localNotifications: LocalNotifications,
     public desafio: DesafioPagePage
     ) { }
  
     ngOnInit() {
-    this.notificacaoTeste();
+    //this.notificacaoTeste();
     }
-
+/* 
   single_notification() {
     // Schedule a single notification
     this.localNotifications.schedule({
@@ -64,8 +62,8 @@ export class Tab3Page implements OnInit {
     if( this.desafio.respondeuCerto == true){
       this.notificacao = "Você ganhou 100 pontos!";
     }     
-
-  }
+ 
+  }*/
 
  
  

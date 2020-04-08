@@ -70,7 +70,8 @@ export class AppComponent {
         }
         else {
          // this.router.navigate(["/login"]);
-          this.navCtrl.navigateForward('/login');
+          //this.navCtrl.navigateForward('/login');
+          this.navCtrl.navigateRoot('/login');
           this.statusBar.styleLightContent();
           this.splashScreen.hide();
         }

@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, from } from 'rxjs';
+import { Observable } from 'rxjs';
 import { LogicProvider } from './services/logic.service';
 import { IonSlides, NavController } from '@ionic/angular';
 import { ServicostorageService } from '../services/servicostorage.service';
 import anime from 'animejs/lib/anime.es';
 import { FirestoreService } from '../services/firestore.service';
-import { MobileAccessibility } from '@ionic-native/mobile-accessibility/ngx';
 import { TextToSpeech } from '@ionic-native/text-to-speech/ngx';
+
 //import { triggerAsyncId } from 'async_hooks';
 
 @Component({
@@ -178,7 +178,6 @@ export class DesafioPagePage implements OnInit {
         this.respondeuErrado = true;
         this.messagemResposta = "Resposta errada! Por favor, arraste para o lado!";
         this.desafioFrases(this.txtLiterario);
-
       }
     } else {
       this.cont_resp++;
@@ -300,7 +299,9 @@ export class DesafioPagePage implements OnInit {
     } else {
         console.log("Screen reader: OFF");
     }
-}
+  }
+
+  
 }
 
 export interface IData {
