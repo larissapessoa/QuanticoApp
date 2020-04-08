@@ -50,6 +50,10 @@ const routes: Routes = [
   {
     path: 'desafios-turma',
     loadChildren: () => import('./desafios-turma/desafios-turma.module').then( m => m.DesafiosTurmaPageModule)
+  },
+  {
+    path: 'desafio-professor',
+    loadChildren: () => import('./desafio-professor/desafio-professor.module').then( m => m.DesafioProfessorPageModule)
   }
 
 ];

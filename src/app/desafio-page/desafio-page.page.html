@@ -13,7 +13,7 @@
       <ion-icon src="../assets/icon/school-outline.svg"></ion-icon>
     </ion-tab-button>
 
-  
+
   </ion-tab-bar>
 
 </ion-tabs>
@@ -21,7 +21,7 @@
 
 <ion-content>
 
-  
+
 
   <ion-slides>
 
@@ -49,13 +49,8 @@
           <ion-label position="fixed" value="desafio">Desafio</ion-label>
           <img slot="end" class="img" [src]="ulrImgContinuar" (click)="next()">
         </ion-item>
-       <ion-item></ion-item>
-
-
-
-
+        <ion-item></ion-item>
       </ion-card>
-
 
     </ion-slide>
 
@@ -66,10 +61,10 @@
             <img class="icon" src="{{desafio.imagem}}" />
             <ion-card-subtitle class="question">{{desafio.question}}</ion-card-subtitle>
           </ion-card-header>
-          <ion-item *ngFor="let opts of desafio.options" >
+          <ion-item *ngFor="let opts of desafio.options">
             <ion-card-content (click)="callAnime(opts.letra)">
-              <div> 
-                {{opts.letra}} . {{opts.option}} 
+              <div>
+                {{opts.letra}} . {{opts.option}}
               </div>
             </ion-card-content>
           </ion-item>
@@ -99,9 +94,9 @@
             <p> A nova fase já está habilitada! Venha conferir.</p>
           </ion-item>
         </ion-card-content>
-       
+
       </ion-card>
-      
+
     </ion-slide>
 
 
@@ -148,4 +143,3 @@
   </ion-slides>
 
 </ion-content>
-

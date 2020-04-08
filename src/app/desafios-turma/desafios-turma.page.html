@@ -4,6 +4,7 @@
 </ion-header>
 
 <ion-content>
+ 
 
  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Puxe para atualizar" refreshingSpinner="circles"
@@ -11,26 +12,52 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-grid>
-    <ion-row>
-      <ion-col *ngFor="let desafio of desafios let i=index;" size=4>
-        <img [src]="fases[i].imagem"  class="img">
-        <ion-fab>
-          <div>
-            <ion-fab-button >
-              <ion-label class="label">
-               {{i}}
-              </ion-label>
-            </ion-fab-button>
-          </div>
-         <!--  <div *ngIf="!fase.habilitado">
-            <ion-fab-button disabled>
-              <ion-icon src="../assets/icon/lock1.svg"></ion-icon>
-            </ion-fab-button>
-          </div> -->
-        </ion-fab>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <div>
 
+    <ion-grid>
+      <ion-item>
+        <ion-card>
+          <img class="icon" />
+          <ion-card-header>
+            <img [src]="urlImage" class="img">
+            <ion-card-subtitle>
+              <ion-card-subtitle>Sala: {{turma.Sala}}</ion-card-subtitle>
+              <ion-card-title>{{turma.Nome}}</ion-card-title>
+              <ion-item class="codigo" lines="none">
+                Código da turma: {{turma.Codigo}
+              </ion-item>
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            Olá, aprendiz {{emailEstudante}}! Aqui é um ambiente preparado por seu professor! Curta bastante!
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+      <ion-item lines="none" class="texto">
+        <ion-row>
+          <ion-col *ngFor="let desafio of desafios let i=index;" size=4>
+            <img [src]="fases[i].imagem"  class="img">
+            <ion-fab>
+              <div>
+                <ion-fab-button (click)="verDesafio(desafio)" >
+                  <ion-label class="label">
+                   {{i}}
+                  </ion-label>
+                </ion-fab-button>
+              </div>
+             <!--  <div *ngIf="!fase.habilitado">
+                <ion-fab-button disabled>
+                  <ion-icon src="../assets/icon/lock1.svg"></ion-icon>
+                </ion-fab-button>
+              </div> -->
+            </ion-fab>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+      
+     
+    </ion-grid>
+  
+  
+  </div>
 </ion-content>

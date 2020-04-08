@@ -23,6 +23,7 @@ export class AdiconarTemasComponent implements OnInit {
   docTurma: any;
   errorMessage: string = '';
   successMessage: string = '';
+  respostaCorreta: any;
 
 
 
@@ -88,13 +89,19 @@ export class AdiconarTemasComponent implements OnInit {
 
   }
 
+  onSelectChange(event){
+    this.respostaCorreta = event.detail.value;
+    console.log(this.respostaCorreta);
+  }
+
   submit(){
   console.log("entrei no submit");
     let putDesafio = {
       "tema": this.tema.value.temaTitulo,
       "texto": this.texto.value.textoLiterario,
       "desafio": this.desafio.value,
-      "video": this.video.value.urlVideo
+      "video": this.video.value.urlVideo,
+      "resposta": this.respostaCorreta
     }
 
     this.firestore.getProfessor().subscribe(snapshot => {
@@ -107,7 +114,6 @@ export class AdiconarTemasComponent implements OnInit {
               this.successMessage = "Desafio criado com sucesso. Desafie seus alunos!";
               this.firestore.presentToast(this.successMessage);
               this.closeModal();
-
             }, err => {
               console.log(err);
               this.errorMessage = err.message;

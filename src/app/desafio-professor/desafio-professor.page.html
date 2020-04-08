@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides>
+    <ion-slide>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle color="light">{{tema}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-item>
+          <ion-icon slot="end" (click)="lerTexto()" src="../assets/icon/play-circle-outline.svg"></ion-icon>
+          <ion-icon slot="end" (click)="pararLeitura()" src="../assets/icon/stop-circle-outline.svg"></ion-icon>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-card-content>
+            <div class="screen">
+              <div class="body">
+                <p class="question">{{texto}}</p>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-item>
+        <ion-item color="tertiary" lines="none" (click)="next()">
+          <ion-label position="fixed">Desafio</ion-label>
+          <img slot="end" class="img" [src]="ulrImgContinuar">
+        </ion-item>
+      </ion-card>
+    </ion-slide>
+
+
+    <ion-slide>
+      <ion-card>
+        <div class="screen">
+          <ion-card-header>
+            <img class="icon" [src]="desafioImagem" />
+            <ion-card-subtitle class="question">{{pergunta}} ?</ion-card-subtitle>
+          </ion-card-header>
+          <ion-item >
+            <ion-card-content >
+              <ion-item (click)="respostaCerta(1)">
+                a) {{opcoes.opcao1}}
+              </ion-item>
+              <ion-item (click)="respostaCerta(2)">
+                b) {{opcoes.opcao2}}
+              </ion-item>
+              <ion-item (click)="respostaCerta(3)">
+                c) {{opcoes.opcao3}}
+              </ion-item>
+              <ion-item (click)="respostaCerta(4)">
+                d) {{opcoes.opcao4}}
+              </ion-item>
+            </ion-card-content>
+          </ion-item>
+         <ion-item *ngIf="respondeu" (click)='next()'>
+            <div class="animate-me" #box>
+              <img width="200" height="200" [src]="ulrImgContinuar" />
+            </div>
+            <label>
+              {{mensagemResposta}}
+            </label>
+          </ion-item> 
+        </div>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide *ngIf="respondeuCerto">
+      <ion-card>
+        <ion-card-header>
+          Como recompensa por sua maestria neste desafio, ouça uma música que irá lhe ajudar nessa jornada!
+        </ion-card-header>
+        <video width="240" height="240" controls>
+          <source [src]="Video" type="video/mp4">
+        </video>
+        <ion-card-content>
+          <ion-item (click)="voltarHome()">
+            <p> A nova fase já está habilitada! Venha conferir.</p>
+          </ion-item>
+        </ion-card-content>
+
+      </ion-card>
+
+    </ion-slide>
+
+
+  </ion-slides>
+
+
+</ion-content>

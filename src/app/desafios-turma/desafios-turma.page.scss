@@ -18,12 +18,11 @@ ion-row {
    --color: #000;
    
   }
-  
-  .img{
-    max-width: 30px;
-   
-    
+
+  .texto{
+    size: 120px;;
   }
+  
   
   ion-fab-button{
     --background: rgba(243, 135, 43, 0.81);
@@ -39,6 +38,41 @@ ion-row {
     font-size: larger;
   }
   
+  ion-card{
+    //--background: #ffffff;
+    --background: rgb(238, 161, 20);
+}
+
+ion-card-header{
+    // --background:rgba(35, 31, 32, 0.79);
+   // --background: rgba(243, 135, 43, 0.38);
+
+    --color: rgb(238, 161, 20);
+   
+}
+
+
+.icon{
+    max-width: 20px;
+
+}
+/* 
+.item{
+    --background: rgba(243, 135, 43, 0.38);
+    --border-radius: 60px;
+
+
+} */
+
+.codigo{
+    --background: rgba(243, 135, 43, 0.38);
+    --border-radius: 60px;
+}
+
+ion-card-subtitle{
+    --color: #ffffff; 
+}
+
 
 
 

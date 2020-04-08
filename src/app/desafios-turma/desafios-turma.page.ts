@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, NavigationExtras, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-desafios-turma',
@@ -16,6 +16,8 @@ export class DesafiosTurmaPage implements OnInit {
     Descricao: "",
     Codigo: ""
   };
+  emailEstudante: any;
+  urlImage: any;
 
   fases = [
     {
@@ -69,8 +71,24 @@ export class DesafiosTurmaPage implements OnInit {
         this.turma.Descricao = this.router.getCurrentNavigation().extras.state.data.Descricao;
         this.turma.Codigo = this.router.getCurrentNavigation().extras.state.data.Codigo;
         this.desafios = this.router.getCurrentNavigation().extras.state.data.Desafios;
+        this.emailEstudante = this.router.getCurrentNavigation().extras.state.data.EmailEstudante;
       }
     });
+    this.urlImage = "assets/images/011-astronaut.png";
+  }
+
+  verDesafio(desafio){
+    let navigationExtras: NavigationExtras = {
+      state: {
+        data: {
+          emailEstudante: this.emailEstudante,
+          desafio: this.desafios
+        }
+      }
+    };
+    this.router.navigate(['/desafio-professor'], navigationExtras);
+
+
   }
 
 

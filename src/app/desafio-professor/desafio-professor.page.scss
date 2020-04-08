@@ -1,0 +1,58 @@
+ion-card-header{
+    --background: rgb(238, 161, 20);
+    --color: #ffffff;
+
+}
+
+ion-fab{
+    --size: 5px;
+}
+
+.animate-me {
+    width: 50px;
+    height: 50px;
+    padding: 20px;
+    background: rgb(238, 161, 20);
+}
+
+.question {
+    --color: #ffffff;
+
+}
+
+
+.center {
+    display: run-in;
+    max-width: 10px;
+}
+
+.option{
+    --background: #ffffff;
+}
+
+ion-tabs {
+    display: run-in;
+}
+
+.icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 70px;
+}
+
+.icon1 {
+    width: 100px;
+    height: 100px;
+    margin-left: 50px;
+}
+
+.img{
+    max-width: 50px;
+}
+
+.resposta {
+    --background: #ffffff;
+    --border-radius: 30px;
+}
+
+

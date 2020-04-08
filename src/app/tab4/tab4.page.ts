@@ -22,7 +22,7 @@ export class Tab4Page implements OnInit {
   successMessage: any;
   turmasEstudante = [] as any;
   desafios = [] as any;
-  ulrImage: any;
+  urlImg: any;
 
 
   constructor(
@@ -37,7 +37,7 @@ export class Tab4Page implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.ulrImage =  "assets/images/010-astronaut.png";
+    this.urlImg ="assets/images/010-astronaut.png";
     this.storage.getEmail().then(data => {
       this.emailEstudante = data;
     })
@@ -185,7 +185,8 @@ export class Tab4Page implements OnInit {
           Desafio: e.payload.doc.data()['desafio'],
           Tema: e.payload.doc.data()['tema'],
           Texto: e.payload.doc.data()['texto'],
-          Video: e.payload.doc.data()['video']
+          Video: e.payload.doc.data()['video'],
+          Resposta: e.payload.doc.data()['resposta']
         };
       }) 
       console.log("desafios", this.desafios);
@@ -196,7 +197,8 @@ export class Tab4Page implements OnInit {
             Sala: Sala,
             Descricao: Descricao,
             Codigo: Codigo,
-            Desafios: this.desafios
+            Desafios: this.desafios,
+            EmailEstudante: this.emailEstudante
           }
         }
       };

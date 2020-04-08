@@ -72,6 +72,15 @@
             <ion-label position="floating">Quarta opção</ion-label>
             <ion-input formControlName="opcao4" type="text"></ion-input>
           </ion-item>
+          <ion-item>
+            <ion-label>Qual das opções acima é a correta?</ion-label>
+            <ion-select value="1" (ionChange)="onSelectChange($event)" okText="Okay" cancelText="Dismiss">
+              <ion-select-option value="1">1°</ion-select-option>
+              <ion-select-option value="2">2°</ion-select-option>
+              <ion-select-option value="3">3°</ion-select-option>
+              <ion-select-option value="4">4°</ion-select-option>
+            </ion-select>
+          </ion-item>
           <ion-fab vertical="bottom" horizontal="end" slot="stacked">
             <ion-fab-button color="warning" position="stacked" [disabled]="!desafio.valid" (click)="next()">
               <ion-icon name="arrow-forward"></ion-icon>
