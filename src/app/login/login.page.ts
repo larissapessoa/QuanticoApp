@@ -29,10 +29,6 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.authService.userDetails() != null) {
-      this.navCtrl.navigateForward('/tabs');
-      console.log(this.authService.userDetails(), "já estive aqui")
-    }
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
