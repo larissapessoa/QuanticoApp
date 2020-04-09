@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.navCtrl.navigateForward('login');
     this.validations_form = this.formBuilder.group({
       email: new FormControl('', Validators.compose([
         Validators.required,
