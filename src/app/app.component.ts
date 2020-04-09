@@ -9,6 +9,7 @@ import { FirestoreService } from './services/firestore.service';
 import { NavigationExtras } from '@angular/router';
 import { ServicostorageService } from './services/servicostorage.service';
 import { NavController } from '@ionic/angular';
+import { AuthenticationService } from './services/authentication.service';
 
 
 
@@ -26,8 +27,7 @@ export class AppComponent {
     private router: Router,
     private firestore: FirestoreService,
     private navCtrl: NavController,
-    private storage: ServicostorageService,
-    private alertCtrl: AlertController,
+    private authService: AuthenticationService
   ) {
     this.initializeApp();
     platform.ready().then(() => {
@@ -69,14 +69,13 @@ export class AppComponent {
           });
         }
         else {
-         // this.router.navigate(["/login"]);
+         this.router.navigate(["/login"]);
           //this.navCtrl.navigateForward('/login');
-          this.navCtrl.navigateRoot('/login');
+          //this.navCtrl.navigateRoot('/login');
           this.statusBar.styleLightContent();
           this.splashScreen.hide();
         }
       })
-      this.statusBar.styleDefault();
     });
   }
 
