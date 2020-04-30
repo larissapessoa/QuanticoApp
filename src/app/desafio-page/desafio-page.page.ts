@@ -54,11 +54,9 @@ export class DesafioPagePage implements OnInit {
     private firestore: FirestoreService,
     private navCtrl: NavController,
     //private mobileAccessibility: MobileAccessibility
-    private tts: TextToSpeech
+    private tts: TextToSpeech,
 
-
-
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.cont_resp = 0;
@@ -89,10 +87,21 @@ export class DesafioPagePage implements OnInit {
     })
 
     this.urlVideo = 'assets/video/' + this.txtLiterario + '.mp4';
+   
+
+    window.addEventListener("load", function () {
+      var mover = document.getElementById('myVideo')
+      mover.addEventListener('ended', myHandler, false);
+      function myHandler(e) {
+        // What you want to do after the event
+        console.log("video terminou")
+      }
+  
+  });
     //this.talkback = this.mobileAccessibility.isTalkBackRunning();
     //console.log("talkback", this.talkback);
     //this.isTalkBackRunningCallback(this.talkback);
-  
+
   }
 
 
@@ -184,32 +193,32 @@ export class DesafioPagePage implements OnInit {
     }
   }
 
-  async lerTexto(){
+  async lerTexto() {
     let texto: string;
     texto = "";
-    this.questions$.forEach(linha =>{
-      linha.forEach(l =>{
-         texto = texto + " " + l.question;
-         console.log("dentro", texto);
+    this.questions$.forEach(linha => {
+      linha.forEach(l => {
+        texto = texto + " " + l.question;
+        console.log("dentro", texto);
 
       })
-    }).finally(()=>{
+    }).finally(() => {
       this.tts.speak({
         text: texto,
         locale: 'pt-BR',
         rate: 0.75
-    
-      }); 
+
+      });
     })
     console.log(texto);
   }
 
-  pararLeitura(){
-    this.tts.speak("").then((value)=>{
-      });
+  pararLeitura() {
+    this.tts.speak("").then((value) => {
+    });
   }
 
-  habilitarFase(){
+  habilitarFase() {
     this.storageFase.getFases().then(data => {
       var AnyData = <[Fases]>data;
       //se a resposta for certa e minha fase atual -->
@@ -224,7 +233,7 @@ export class DesafioPagePage implements OnInit {
 
   desafioFrases(fase) {
     switch (fase) {
-      case 1: 
+      case 1:
         this.frase = "No meu humilde argumento, De tudo quanto tem massa";
         return this.completaFrase = "Nos mostra o conhecimento";
       case 2:
@@ -234,21 +243,21 @@ export class DesafioPagePage implements OnInit {
         this.frase = "E até a aceleração, É uma força vetor....";
         return this.completaFrase = "Módulo é o mesmo valor";
 
-  default:
+      default:
         console.log("Não possui texto");
     }
   }
 
 
   jogoDaMemoria(fase) {
-   
-    if(fase == 1){
+
+    if (fase == 1) {
       this.level = "/level1/";
-    }else if (fase == 2){
+    } else if (fase == 2) {
       this.level = "/level2/";
-    }else if (fase == 3){
+    } else if (fase == 3) {
       this.level = "/level3/";
-    }else{
+    } else {
       console.log("Não possui texto");
     }
   }
@@ -277,16 +286,16 @@ export class DesafioPagePage implements OnInit {
 
   }
 
-  voltarHome(){
+  voltarHome() {
     this.navCtrl.navigateForward('/tabs');
-
+    this.firestore.presentToast("Puxe para baixo para atualizar!")
   }
 
   next() {
     return this.slides.slideNext();
   }
 
-  
+
 
   prev() {
     this.slides.slidePrev();
@@ -294,14 +303,14 @@ export class DesafioPagePage implements OnInit {
 
   isTalkBackRunningCallback(boolean) {
     if (boolean) {
-        console.log("Screen reader: ON");
-        // Do something to improve the behavior of the application while a screen reader is active.
+      console.log("Screen reader: ON");
+      // Do something to improve the behavior of the application while a screen reader is active.
     } else {
-        console.log("Screen reader: OFF");
+      console.log("Screen reader: OFF");
     }
   }
 
-  
+
 }
 
 export interface IData {
