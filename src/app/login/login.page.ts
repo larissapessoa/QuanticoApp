@@ -17,31 +17,7 @@ export class LoginPage implements OnInit {
 
   validations_form: FormGroup;
   errorMessage: string = '';
-
-  constructor(
-    private firestore: FirestoreService,
-    private navCtrl: NavController,
-    private authService: AuthenticationService,
-    private formBuilder: FormBuilder,
-    private storage: ServicostorageService
-
-
-  ) { }
-
-  ngOnInit() {
-    this.navCtrl.navigateForward('login');
-    this.validations_form = this.formBuilder.group({
-      email: new FormControl('', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
-      ])),
-      password: new FormControl('', Validators.compose([
-        Validators.minLength(5),
-        Validators.required
-      ])),
-    });
-  }
-
+  img: any;
 
   validation_messages = {
     'email': [
@@ -54,10 +30,38 @@ export class LoginPage implements OnInit {
     ]
   };
 
+  constructor(
+    private firestore: FirestoreService,
+    private navCtrl: NavController,
+    private authService: AuthenticationService,
+    private formBuilder: FormBuilder,
+    private storage: ServicostorageService
+  ) {
+    this.validations_form = this.formBuilder.group({
+      email: new FormControl('', Validators.compose([
+        Validators.required,
+        Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')
+      ])),
+      password: new FormControl('', Validators.compose([
+        Validators.minLength(5),
+        Validators.required
+      ])),
+    });
+
+    
+   }
+
+  ngOnInit() {
+    console.log("entrei no login")
+    this.img = "assets/images/logoQuanticoApp.jpg";
+    //this.navCtrl.navigateForward('/login');   
+  }
+
+
+  
 
   loginUser(value) {
     var professor = false;
-    var terminou = false;
     let navigationExtras: NavigationExtras = {
       state: {
         data: ""

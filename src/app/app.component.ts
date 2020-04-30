@@ -33,7 +33,7 @@ export class AppComponent {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      statusBar.styleDefault();
+      statusBar.styleLightContent();
       splashScreen.hide();
 
     });
@@ -50,8 +50,6 @@ export class AppComponent {
       firebase.auth().onAuthStateChanged(user => {
         console.log("user", user);
         if (user) {
-          this.statusBar.styleLightContent();
-          this.splashScreen.hide();
           this.firestore.getProfessor().subscribe(async snapshot => {
             snapshot.forEach(doc => {
               if (doc.data().email == user.email) {
@@ -67,9 +65,7 @@ export class AppComponent {
           });
         }
         else {
-          this.navCtrl.navigateForward('/login');
-          this.statusBar.styleLightContent();
-          this.splashScreen.hide();
+          //this.navCtrl.navigateForward('/login');
         }
       })
     });

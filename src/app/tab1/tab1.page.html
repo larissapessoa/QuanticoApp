@@ -1,14 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title class="titulo">
-      Universo de descobertas
-    </ion-title>
-    <ion-icon (click)="sair()" class="sair" slot="end" src="../assets/icon/log-out-outline.svg"></ion-icon>
-  </ion-toolbar>
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title>Universo de descobertas</ion-title>
+      <ion-icon (click)="sair()" slot="end" class="sair" src="../assets/icon/log-out-outline.svg"></ion-icon>
+    </ion-toolbar>
+  </ion-footer>
   <ion-item>
     <ion-label>Modo Planeta Escuro</ion-label>
     <!-- <ion-img [src]="assets/images/astrology.png"></ion-img> -->
-    <ion-toggle (ionChange)="change($event)" color="dark"></ion-toggle>
+    <ion-toggle (ionChange)="change()" color="dark"></ion-toggle>
   </ion-item>
 </ion-header>
 

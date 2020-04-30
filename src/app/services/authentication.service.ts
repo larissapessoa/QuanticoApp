@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { LoadingController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 
@@ -15,7 +16,9 @@ export class AuthenticationService {
   constructor(
     //public afth: AngularFireAuth
     public loadingController: LoadingController,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private router: Router,
+
   ){}
 
  /*  getAuth(){
@@ -47,6 +50,7 @@ export class AuthenticationService {
         .then(() => {
           console.log("LOG Out");
           resolve();
+          this.router.navigate([''])
         }).catch((error) => {
           reject();
         });
