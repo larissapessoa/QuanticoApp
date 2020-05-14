@@ -242,7 +242,24 @@ export class DesafioPagePage implements OnInit {
       case 3:
         this.frase = "E até a aceleração, É uma força vetor....";
         return this.completaFrase = "Módulo é o mesmo valor";
-
+      case 4:
+        this.frase = "Que o aço, ferro ou estanho, Ele mude de tamanho";
+        return this.completaFrase = "Em comprimento e largura";
+      case 5:
+          this.frase = "Nem uma porca pra tirar, De um parafuso quente, Esfrie um, depois esquente";
+          return this.completaFrase = "Aquele que vai folgar";
+      case 6:
+          this.frase = "Por dentro a matéria esquenta,";
+          return this.completaFrase = "Por fora o corpo é gelado";
+      case 7:
+          this.frase = "Mova com força, coroa, Que isso é bom pra pessoa";
+          return this.completaFrase = "Quando quer Física estudar";
+      case 8:
+          this.frase = "Passou uma prova diferente..";
+          return this.completaFrase = "Das que eu já elaborei";
+      case 9:
+        this.frase = "Está entendendo agora? Eu respondi: Sim, senhora,";
+        return this.completaFrase = "Mas não entendi foi nada";
       default:
         console.log("Não possui texto");
     }
@@ -257,6 +274,18 @@ export class DesafioPagePage implements OnInit {
       this.level = "/level2/";
     } else if (fase == 3) {
       this.level = "/level3/";
+    } else if (fase == 4) {
+      this.level = "/level4/";
+    } else if (fase == 5) {
+      this.level = "/level5/";
+    } else if (fase == 6) {
+        this.level = "/level6/";
+    } else if (fase == 7) {
+          this.level = "/level7/";
+    } else if (fase == 8) {
+      this.level = "/level8/";
+    } else if (fase == 9) {
+      this.level = "/level9/";
     } else {
       console.log("Não possui texto");
     }

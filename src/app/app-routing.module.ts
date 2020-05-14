@@ -54,6 +54,30 @@ const routes: Routes = [
   {
     path: 'desafio-professor',
     loadChildren: () => import('./desafio-professor/desafio-professor.module').then( m => m.DesafioProfessorPageModule)
+  },
+  {
+    path: 'level4',
+    loadChildren: () => import('./level4/level4.module').then( m => m.Level4PageModule)
+  },
+  {
+    path: 'level5',
+    loadChildren: () => import('./level5/level5.module').then( m => m.Level5PageModule)
+  },
+  {
+    path: 'level6',
+    loadChildren: () => import('./level6/level6.module').then( m => m.Level6PageModule)
+  },
+  {
+    path: 'level7',
+    loadChildren: () => import('./level7/level7.module').then( m => m.Level7PageModule)
+  },
+  {
+    path: 'level8',
+    loadChildren: () => import('./level8/level8.module').then( m => m.Level8PageModule)
+  },
+  {
+    path: 'level9',
+    loadChildren: () => import('./level9/level9.module').then( m => m.Level9PageModule)
   }
 
 ];

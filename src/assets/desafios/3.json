@@ -1,26 +1,26 @@
 [
     {
         "id": 1,
-        "question": "Vetor é um tipo de grandeza que possui além do sentido e direção, um valor numérico. Como este valor é chamado?",
+        "question": "Assinale a alternativa que contém apenas grandezas vetoriais.",
         "options": [
             {
                 "letra": "a",
-                "option": "Vetorização"
+                "option": "Momento linear, campo magnético, campo elétrico e força."
             },
             {
                 "letra": "b",
-                "option": "Módulo"
+                "option": "Quantidade de movimento, campo magnético, energia e tempo"
             },
             {
                 "letra": "c",
-                "option": "Delta"
+                "option": "Energia, massa, peso, empuxo, campo elétrico e velocidade."
             },
             {
                 "letra": "d",
-                "option": "Força"
+                "option": "Aceleração, velocidade, força, impulso, empuxo e trabalho."
             }
         ],
-        "resposta": "b",
+        "resposta": "a",
         "imagem": "../assets/images/014-astronaut.png",
         "imagem1":"../assets/images/016-astronaut.png"
     }

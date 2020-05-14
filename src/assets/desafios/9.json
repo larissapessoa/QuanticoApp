@@ -1,26 +1,27 @@
 [
     {
         "id": 1,
-        "question": "O Alfa é o coeficiente linear para objetos que possuem apenas comprimentos. No texto, a Professora compara o Alfa a que animal?",
+        "question": "Marque nas opções abaixo qual grandeza não interfere na dilatação dos sólidos:",
         "options": [
             {
                 "letra": "a",
-                "option": "Peixe"
+                "option": "Natureza do material"
             },
             {
                 "letra": "b",
-                "option": "Unicórnio"
+                "option": "Comprimento inicial do sólido"
             },
             {
                 "letra": "c",
-                "option": "Cachorro"
+                "option": "Variação de temperatura sofrida pelo sólido"
             },
             {
                 "letra": "d",
-                "option": "Dinossauro"
+                "option": "Tempo em que o sólido fica exposto à fonte de calor."
             }
         ],
         "resposta": "a",
-        "imagem": "../assets/images/016-astronaut.png"
+        "imagem": "../assets/images/016-astronaut.png",
+        "imagem1":"../assets/images/016-astronaut.png"
     }
 ]

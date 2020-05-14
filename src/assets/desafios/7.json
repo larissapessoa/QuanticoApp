@@ -21,6 +21,7 @@
             }
         ],
         "resposta": "a",
-        "imagem": "../assets/images/014-astronaut.png"
+        "imagem": "../assets/images/014-astronaut.png",
+        "imagem1":"../assets/images/016-astronaut.png"
     }
 ]

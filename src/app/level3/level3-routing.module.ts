@@ -7,6 +7,47 @@ const routes: Routes = [
   {
     path: '',
     component: Level3Page
+  },
+  {
+    path: 'tab1',
+    children: [
+      {
+        path: '',
+        redirectTo: '/tabs/tabs/tab1',
+        pathMatch: 'full'
+      }
+    ]
+
+  },
+
+  {
+
+    path: 'tab2',
+    children: [
+      {
+        path: '',
+        redirectTo: '/tabs/tabs/tab2',
+        pathMatch: 'full'
+      }
+    ]
+
+  },
+
+  {
+    path: 'tab3',
+    children: [
+      {
+        path: '',
+        redirectTo: '/tabs/tabs/tab3',
+        pathMatch: 'full'
+      }
+    ]
+
+  },
+  {
+    path: '',
+    redirectTo: '/tabs/tabs/tab1',
+    pathMatch: 'full'
   }
 ];
 

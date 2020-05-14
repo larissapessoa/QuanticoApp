@@ -1,26 +1,27 @@
 [
     {
         "id": 1,
-        "question": "refazer",
+        "question": "Um objeto de massa 5 kg é deixado cair de uma determinada altura. Ele chega ao solo com energia cinética igual 2000 J. Determine a altura que o objeto foi abandonado. Despreze o atrito com o ar e considere g = 10 m/s²",
         "options": [
             {
                 "letra": "a",
-                "option": "A Energia e Trabalho de uma Força"
+                "option": "10"
             },
             {
                 "letra": "b",
-                "option": "A Força e Grandeza de uma Energia"
+                "option": "40"
             },
             {
                 "letra": "c",
-                "option": "A Energia e a Grandeza de uma Força"
+                "option": "80"
             },
             {
                 "letra": "d",
-                "option": "O Trabalho transformado em Energia"
+                "option": "110"
             }
         ],
         "resposta": "b",
-        "imagem": "../assets/images/014-astronaut.png"
+        "imagem": "../assets/images/014-astronaut.png",
+        "imagem1":"../assets/images/016-astronaut.png"
     }
 ]

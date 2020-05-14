@@ -1,26 +1,27 @@
 [
     {
         "id": 1,
-        "question": "Quais são as três escalas termometricas da Física?",
+        "question": "Em um dia muito quente, é possível observar que um fio condutor que conecta dois postes aparenta ter um comprimento maior que em dias frios. Isso acontece em decorrência de um fenômeno chamado:",
         "options": [
             {
                 "letra": "a",
-                "option": "Delta, Alfa, Fahrenheit"
+                "option": "Dilatação linear"
             },
             {
                 "letra": "b",
-                "option": "Celsius, Color, Fire"
+                "option": "Aquecimento"
             },
             {
                 "letra": "c",
-                "option": "Celsius, Kelvin e Fahrenheit"
+                "option": "Dilatação superficial"
             },
             {
                 "letra": "d",
-                "option": "Calor, Força, Grandeza"
+                "option": "Transformação isobárica"
             }
         ],
-        "resposta": "c",
-        "imagem": "../assets/images/018-astronaut.png"
+        "resposta": "a",
+        "imagem": "../assets/images/018-astronaut.png",
+        "imagem1":"../assets/images/016-astronaut.png"
     }
 ]

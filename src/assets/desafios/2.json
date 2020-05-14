@@ -1,26 +1,26 @@
 [
     {
         "id": 1,
-        "question": "Segundo o texto, quais são os estados físicos da água?",
+        "question": "Assinale a alternativa que contém apenas grandezas escalares.",
         "options": [
             {
                 "letra": "a",
-                "option": "Pastoso,Pedra, Ar"
+                "option": "Aceleração, velocidade, força, impulso, empuxo e trabalho."
             },
             {
                 "letra": "b",
-                "option": "Líquido, Sólido, Vapor"
+                "option": "Trabalho, aceleração, campo magnético, força centrípeta e temperatura."
             },
             {
                 "letra": "c",
-                "option": "Corretivo, Suco, Café"
+                "option": "Comprimento, tempo, temperatura e massa"
             },
             {
                 "letra": "d",
-                "option": "Papel, Tinta e Fumaça"
+                "option": "Quantidade de movimento, campo magnético e energia"
             }
         ],
-        "resposta": "b",
+        "resposta": "c",
         "imagem": "../assets/images/010-astronaut.png",
         "imagem1":"../assets/images/016-astronaut.png"
     }

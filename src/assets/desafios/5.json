@@ -1,26 +1,27 @@
 [
     {
         "id": 1,
-        "question": "refazer desafio",
+        "question": "Uma lâmina bimetálica composta por zinco e aço está fixada em uma parede de forma que a barra de aço permanece virada para cima. O que ocorre quando a lâmina é resfriada? Dado: αZINCO = 25x10 – 6 °C – 1 , αAÇO = 11x10 – 6 °C – 1",
         "options": [
             {
                 "letra": "a",
-                "option": "Estranho, Ouro, Magma"
+                "option": "As duas barras sofrem a mesma dilatação."
             },
             {
                 "letra": "b",
-                "option": "Prata, Fósforo, Aço"
+                "option": "A lâmina bimetálica curva-se para cima."
             },
             {
                 "letra": "c",
-                "option": "Ouro, Níquel, Aço"
+                "option": "A lâmina bimetálica curva-se para baixo."
             },
             {
                 "letra": "d",
-                "option": "Aço, Ferro, Estanho"
+                "option": " A lâmina quebra-se, uma vez que é feita de materiais diferentes."
             }
         ],
-        "resposta": "d",
-        "imagem": "../assets/images/014-astronaut.png"
+        "resposta": "c",
+        "imagem": "../assets/images/014-astronaut.png",
+        "imagem1":"../assets/images/016-astronaut.png"
     }
 ]
